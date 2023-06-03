@@ -3,13 +3,16 @@ import {
 	Card,
 	CardActionArea,
 	CardContent,
+	Skeleton,
 	Typography,
 } from '@mui/material';
 import { type NextPage } from 'next';
-import { api } from 'y/utils/api';
+import { api } from 'src/utils/api';
 
 const Home: NextPage = () => {
-	const { data } = api.example.hello.useQuery({ text: 'from tRPC' });
+	const { data, isLoading } = api.example.greeting.useQuery({
+		text: 'from tRPC',
+	});
 
 	return (
 		<Box
@@ -30,7 +33,13 @@ const Home: NextPage = () => {
 			>
 				<CardActionArea>
 					<CardContent>
-						<Typography>{data?.greeting}</Typography>
+						<Typography>
+							{isLoading ? (
+								<Skeleton sx={{ height: '50px' }} />
+							) : (
+								data?.greeting
+							)}
+						</Typography>
 					</CardContent>
 				</CardActionArea>
 			</Card>

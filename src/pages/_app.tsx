@@ -4,10 +4,10 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
 import { type AppProps, type AppType } from 'next/app';
 import Head from 'next/head';
-import createEmotionCache from 'y/styles/createEmotionCache';
-import 'y/styles/globals.css';
-import theme from 'y/styles/theme';
-import { api } from 'y/utils/api';
+import createEmotionCache from 'src/styles/createEmotionCache';
+import 'src/styles/globals.css';
+import theme from 'src/styles/theme';
+import { api } from 'src/utils/api';
 
 const clientSideEmotionCache = createEmotionCache();
 

@@ -9,10 +9,10 @@ import Document, {
 	type DocumentProps,
 } from 'next/document';
 import * as React from 'react';
-import createEmotionCache from 'y/styles/createEmotionCache';
-import theme, { roboto } from 'y/styles/theme';
+import createEmotionCache from 'src/styles/createEmotionCache';
+import theme, { roboto } from 'src/styles/theme';
 // import { type MyAppProps } from './_app';
-import { type MyAppProps } from 'y/pages/_app';
+import { type MyAppProps } from 'src/pages/_app';
 
 interface MyDocumentProps extends DocumentProps {
 	emotionStyleTags: JSX.Element[];
