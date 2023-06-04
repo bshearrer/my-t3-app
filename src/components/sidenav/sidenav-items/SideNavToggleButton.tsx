@@ -7,17 +7,10 @@ type SideNavToggleButtonProps = {
 	setOpen: (open: boolean) => void;
 	textColor: string;
 };
-export const SideNavToggleButton = ({
-	open,
-	setOpen,
-	textColor,
-}: SideNavToggleButtonProps): JSX.Element => {
+export const SideNavToggleButton = ({ open, setOpen, textColor }: SideNavToggleButtonProps): JSX.Element => {
 	return (
 		<ListItem>
-			<IconButton
-				onClick={() => setOpen(!open)}
-				sx={{ color: textColor }}
-			>
+			<IconButton onClick={() => setOpen(!open)} sx={{ color: textColor }}>
 				{open ? <ChevronLeftIcon /> : <ChevronRightIcon />}
 			</IconButton>
 		</ListItem>

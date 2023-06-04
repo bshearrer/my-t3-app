@@ -2,8 +2,8 @@ import { getAuth } from '@clerk/nextjs/server';
 import { initTRPC, TRPCError } from '@trpc/server';
 import { type CreateNextContextOptions } from '@trpc/server/adapters/next';
 import superjson from 'superjson';
-import { prisma } from '../db';
 import { ZodError } from 'zod';
+import { prisma } from '../db';
 
 export const createTRPCContext = (opts: CreateNextContextOptions) => {
 	const userId = getAuth(opts.req).userId;
@@ -23,10 +23,7 @@ const t = initTRPC.context<typeof createTRPCContext>().create({
 			...shape,
 			data: {
 				...shape.data,
-				zodError:
-					error.cause instanceof ZodError
-						? error.cause.flatten()
-						: null,
+				zodError: error.cause instanceof ZodError ? error.cause.flatten() : null,
 			},
 		};
 	},

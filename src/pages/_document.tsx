@@ -1,13 +1,6 @@
 import createEmotionServer from '@emotion/server/create-instance';
 import { type AppType } from 'next/app';
-import Document, {
-	Head,
-	Html,
-	Main,
-	NextScript,
-	type DocumentContext,
-	type DocumentProps,
-} from 'next/document';
+import Document, { Head, Html, Main, NextScript, type DocumentContext, type DocumentProps } from 'next/document';
 import * as React from 'react';
 import createEmotionCache from 'src/styles/createEmotionCache';
 import theme, { roboto } from 'src/styles/theme';
@@ -71,11 +64,7 @@ MyDocument.getInitialProps = async (ctx: DocumentContext) => {
 
 	ctx.renderPage = () =>
 		originalRenderPage({
-			enhanceApp: (
-				App: React.ComponentType<
-					React.ComponentProps<AppType> & MyAppProps
-				>,
-			) =>
+			enhanceApp: (App: React.ComponentType<React.ComponentProps<AppType> & MyAppProps>) =>
 				function EnhanceApp(props) {
 					return <App emotionCache={cache} {...props} />;
 				},

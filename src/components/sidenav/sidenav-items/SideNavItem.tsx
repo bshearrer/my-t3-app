@@ -3,25 +3,16 @@ import { Box, ListItem, Stack, Typography } from '@mui/material';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { checkUserRole } from 'src/utils/clientAuthUtil';
+import { HOVER_COLOR, TEXT_COLOR } from '../util/sidenav-util';
 
-type SideNavDrawerItemProps = {
+type SideNavItemProps = {
 	href: string;
 	open: boolean;
 	icon: React.ReactNode;
 	text: string;
-	textColor: string;
-	hoverColor: string;
 	role?: string;
 };
-export const SideNavDrawerItem = ({
-	href,
-	open,
-	icon,
-	text,
-	textColor,
-	hoverColor,
-	role,
-}: SideNavDrawerItemProps): JSX.Element => {
+export const SideNavItem = ({ href, open, icon, text, role }: SideNavItemProps): JSX.Element => {
 	const { pathname } = useRouter();
 	const { user, isLoaded } = useUser();
 
@@ -34,12 +25,10 @@ export const SideNavDrawerItem = ({
 				sx={{
 					display: 'flex',
 					alignItems: 'flex-start',
-					color: textColor,
-					bgcolor: pathname.includes(href)
-						? hoverColor
-						: 'transparent',
+					color: TEXT_COLOR,
+					bgcolor: pathname.includes(href) ? HOVER_COLOR : 'transparent',
 					'&:hover': {
-						bgcolor: hoverColor,
+						bgcolor: HOVER_COLOR,
 					},
 				}}
 			>

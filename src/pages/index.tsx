@@ -1,11 +1,4 @@
-import {
-	Box,
-	Card,
-	CardContent,
-	Skeleton,
-	Stack,
-	Typography,
-} from '@mui/material';
+import { Box, Card, CardContent, Skeleton, Stack, Typography } from '@mui/material';
 import { type NextPage } from 'next';
 import { api } from 'src/utils/api';
 
@@ -30,20 +23,11 @@ const Home: NextPage = () => {
 				}}
 			>
 				<CardContent sx={{ height: '100%' }}>
-					<Stack
-						height={'100%'}
-						justifyContent={'center'}
-						alignItems={'center'}
-						spacing={2}
-					>
+					<Stack height={'100%'} justifyContent={'center'} alignItems={'center'} spacing={2}>
 						{isLoading ? (
 							<>
-								<Skeleton
-									sx={{ width: '50%', height: '45px' }}
-								/>
-								<Skeleton
-									sx={{ width: '15%', height: '45px' }}
-								/>
+								<Skeleton sx={{ width: '50%', height: '45px' }} />
+								<Skeleton sx={{ width: '15%', height: '45px' }} />
 							</>
 						) : (
 							<>

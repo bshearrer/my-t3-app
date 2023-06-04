@@ -12,9 +12,7 @@ type AlertContextType = {
 
 export const AlertContext = createContext<AlertContextType>({
 	addAlert: () => {
-		throw new Error(
-			'addAlert() not implemented. Are you using AlertProvider?',
-		);
+		throw new Error('addAlert() not implemented. Are you using AlertProvider?');
 	},
 });
 

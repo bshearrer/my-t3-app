@@ -2,15 +2,11 @@ import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import PeopleIcon from '@mui/icons-material/People';
 import { useState } from 'react';
 import { SideNavToggleButton } from './/sidenav-items/SideNavToggleButton';
-import { SideNavDrawerItem } from './sidenav-items/SideNavDrawerItem';
+import { SideNavItem } from './sidenav-items/SideNavItem';
 import { SideNavLogo } from './sidenav-items/SideNavLogo';
 import { SideNavUserItem } from './sidenav-items/SideNavUserItem';
 import { SideNav, SideNavList } from './util/sidenav-styled-components';
-import {
-	HOVER_COLOR,
-	TEXT_COLOR,
-	type DrawerItemType,
-} from './util/sidenav-util';
+import { TEXT_COLOR, type DrawerItemType } from './util/sidenav-util';
 
 export const SideNavDrawer = () => {
 	const [open, setOpen] = useState(false);
@@ -33,22 +29,9 @@ export const SideNavDrawer = () => {
 		<SideNav open={open} variant="permanent">
 			<SideNavList>
 				<SideNavLogo />
-				<SideNavToggleButton
-					open={open}
-					setOpen={setOpen}
-					textColor={TEXT_COLOR}
-				/>
+				<SideNavToggleButton open={open} setOpen={setOpen} textColor={TEXT_COLOR} />
 				{drawerItems.map((item) => (
-					<SideNavDrawerItem
-						key={item.href}
-						href={item.href}
-						open={open}
-						icon={item.icon}
-						text={item.text}
-						textColor={TEXT_COLOR}
-						hoverColor={HOVER_COLOR}
-						role={item.role}
-					/>
+					<SideNavItem key={item.href} {...item} open={open} />
 				))}
 				<SideNavUserItem textColor={TEXT_COLOR} />
 			</SideNavList>

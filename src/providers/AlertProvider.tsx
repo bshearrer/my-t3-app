@@ -10,9 +10,7 @@ export function AlertProvider({ children }: PropsWithChildren) {
 	}
 
 	const onCloseSnackbar = (i: number) => {
-		setAlerts((prevAlerts) =>
-			prevAlerts.filter((_, alertIndex) => alertIndex !== i),
-		);
+		setAlerts((prevAlerts) => prevAlerts.filter((_, alertIndex) => alertIndex !== i));
 	};
 
 	return (

@@ -19,10 +19,7 @@ export const SideNavUserItem = ({ textColor }: SideNavUserItemProps) => {
 			<SignedOut>
 				<Box>
 					<SignInButton mode="modal">
-						<Button
-							variant="outlined"
-							sx={{ p: 0, color: textColor }}
-						>
+						<Button variant="outlined" sx={{ p: 0, color: textColor }}>
 							Log In
 						</Button>
 					</SignInButton>
