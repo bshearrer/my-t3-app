@@ -8,10 +8,20 @@ import { prisma } from '../db';
 export const createTRPCContext = (opts: CreateNextContextOptions) => {
 	const session = getAuth(opts.req);
 	const { userId, sessionClaims } = session;
+
+	/*
+	 *  -- HOW TO SETUP ROLES IN CLERK --
+	 * 1. Go to the Clerk dashboard, and select your application
+	 * 2. Click on "Users" in the left sidebar, select a user, and add { "role": <role_name> } to the "Public Metadata" field
+	 * 3. Click on Sessions in the left sidebar underneath Configure
+	 * 4. Click the Edit button next to "Customize Session Token", and add { "publicMetadata": "{{user.public_metadata}}" }
+	 * 5. Click Save, and you are finished.
+	 */
 	const { role } =
 		sessionClaims && sessionClaims.publicMetadata
 			? (sessionClaims?.publicMetadata as { role: string | null | undefined })
 			: { role: null };
+
 	return {
 		prisma,
 		clerk: {
