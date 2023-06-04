@@ -31,5 +31,7 @@ Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/ver
 ## Things to add
 
 ### Clerk
+
 -   Public vs Private pages in middleware.ts with Clerk
 -   Clerk roles setup (currently described setup in trpc.ts)
+-   RBAC Page protection with Clerk
