@@ -1,6 +1,8 @@
+import { useUser } from '@clerk/nextjs';
 import { Box, ListItem, Stack, Typography } from '@mui/material';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { checkUserRole } from 'src/utils/clientAuthUtil';
 
 type SideNavDrawerItemProps = {
 	href: string;
@@ -9,6 +11,7 @@ type SideNavDrawerItemProps = {
 	text: string;
 	textColor: string;
 	hoverColor: string;
+	role?: string;
 };
 export const SideNavDrawerItem = ({
 	href,
@@ -17,8 +20,18 @@ export const SideNavDrawerItem = ({
 	text,
 	textColor,
 	hoverColor,
+	role,
 }: SideNavDrawerItemProps): JSX.Element => {
 	const { pathname } = useRouter();
+	const { user, isLoaded } = useUser();
+
+	if (role && user && isLoaded) {
+		const hasRole = checkUserRole(user, role);
+
+		if (!hasRole) {
+			return <></>;
+		}
+	}
 
 	return (
 		<Link href={href}>

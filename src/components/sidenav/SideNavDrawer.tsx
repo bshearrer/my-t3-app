@@ -22,6 +22,7 @@ export const SideNavDrawer = () => {
 			href: '/admin',
 			icon: <AdminPanelSettingsIcon />,
 			text: 'Admin Settings',
+			role: 'admin',
 		},
 		{
 			href: '/users',
@@ -65,6 +66,7 @@ export const SideNavDrawer = () => {
 						text={item.text}
 						textColor={TEXT_COLOR}
 						hoverColor={HOVER_COLOR}
+						role={item.role}
 					/>
 				))}
 				<SideNavUserItem textColor={TEXT_COLOR} />
