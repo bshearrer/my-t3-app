@@ -1,49 +1,37 @@
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import PeopleIcon from '@mui/icons-material/People';
-import { Drawer, List } from '@mui/material';
+import { List } from '@mui/material';
 import { useState } from 'react';
-import { SideNavDrawerItem } from './SideNavDrawerItem';
-import { SideNavLogo } from './SideNavLogo';
-import { SideNavToggleButton } from './SideNavToggleButton';
-import { SideNavUserItem } from './SideNavUserItem';
+import { SideNavToggleButton } from './/sidenav-items/SideNavToggleButton';
+import { SideNavDrawerItem } from './sidenav-items/SideNavDrawerItem';
+import { SideNavLogo } from './sidenav-items/SideNavLogo';
+import { SideNavUserItem } from './sidenav-items/SideNavUserItem';
 import {
-	CLOSED_DRAWER_WIDTH,
 	HOVER_COLOR,
-	OPEN_DRAWER_WIDTH,
 	TEXT_COLOR,
 	type DrawerItemType,
 } from './util/sidenav-util';
+import { SideNav } from './util/styled.drawer';
 
 export const SideNavDrawer = () => {
 	const [open, setOpen] = useState(false);
 
 	const drawerItems: DrawerItemType[] = [
 		{
+			href: '/users',
+			icon: <PeopleIcon />,
+			text: 'Users',
+		},
+		{
 			href: '/admin',
 			icon: <AdminPanelSettingsIcon />,
 			text: 'Admin Settings',
 			role: 'admin',
 		},
-		{
-			href: '/users',
-			icon: <PeopleIcon />,
-			text: 'Users',
-		},
 	];
 
 	return (
-		<Drawer
-			open={open}
-			variant="permanent"
-			sx={{
-				width: open ? OPEN_DRAWER_WIDTH : CLOSED_DRAWER_WIDTH,
-				transition: 'width 0.3s',
-				'& .MuiDrawer-paper': {
-					width: open ? OPEN_DRAWER_WIDTH : CLOSED_DRAWER_WIDTH,
-					transition: 'width 0.3s',
-				},
-			}}
-		>
+		<SideNav open={open} variant="permanent">
 			<List
 				sx={{
 					height: '100vh',
@@ -71,6 +59,6 @@ export const SideNavDrawer = () => {
 				))}
 				<SideNavUserItem textColor={TEXT_COLOR} />
 			</List>
-		</Drawer>
+		</SideNav>
 	);
 };

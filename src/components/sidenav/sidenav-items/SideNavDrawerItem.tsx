@@ -25,13 +25,8 @@ export const SideNavDrawerItem = ({
 	const { pathname } = useRouter();
 	const { user, isLoaded } = useUser();
 
-	if (role && user && isLoaded) {
-		const hasRole = checkUserRole(user, role);
-
-		if (!hasRole) {
-			return <></>;
-		}
-	}
+	const userHasRole = role && isLoaded ? checkUserRole(user, role) : true;
+	if (role && (!isLoaded || !userHasRole)) return <></>;
 
 	return (
 		<Link href={href}>
