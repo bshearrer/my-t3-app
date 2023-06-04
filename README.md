@@ -8,15 +8,15 @@ We try to keep this project as simple as possible, so you can start with just th
 
 If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
 
--   [Next.js](https://nextjs.org) (React Framework)
--   [MUI](https://mui.com) (React UI Framework)
--   [tRPC](https://trpc.io) (RPC Framework)
--   [Prisma](https://prisma.io) (Database ORM)
--   [MongoDB](https://mongodb.com) (Database)
--   [Clerk](https://clerk.dev) (Authentication)
--   [Zod](https://zod.dev/) (Schema Validation)
--   [Typescript](https://typescriptlang.org) (Language)
--   [Tanstack-Query](https://tanstack.com/query/latest) (Query Library)
+-   [Next.js](https://nextjs.org) (React Framework) <img src="https://simpleicons.org/icons/next-dot-js.svg" alt="Next.js" width="16" height="16" />
+-   [MUI](https://mui.com) (React UI Framework) <img src="https://mui.com/static/favicon.ico" alt="MUI" width="16" height="16" />
+-   [tRPC](https://trpc.io) (RPC Framework) <img src="https://trpc.io/favicon.ico" alt="tRPC" width="16" height="16" />
+-   [Prisma](https://prisma.io) (Database ORM) <img src="https://simpleicons.org/icons/prisma.svg" alt="Prisma" width="16" height="16" />
+-   [MongoDB](https://mongodb.com) (Database) <img src="https://simpleicons.org/icons/mongodb.svg" alt="MongoDB" width="16" height="16" />
+-   [Clerk](https://clerk.dev) (Authentication) <img src="https://clerk.dev/favicon.ico" alt="Clerk" width="16" height="16" />
+-   [Zod](https://zod.dev/) (Schema Validation) <img src="https://zod.dev/favicon.ico" alt="Zod" width="16" height="16" />
+-   [Typescript](https://typescriptlang.org) (Language) <img src="https://simpleicons.org/icons/typescript.svg" alt="Typescript" width="16" height="16" />
+-   [Tanstack-Query](https://tanstack.com/query/latest) (Query Library) <img src="https://simpleicons.org/icons/typescript.svg" alt="Tanstack-Query" width="16" height="16" />
 
 #### Things to add still
 
