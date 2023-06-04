@@ -31,7 +31,7 @@ const Home: NextPage = () => {
 							</>
 						) : (
 							<>
-								<Typography variant="h6">{data?.greeting}.</Typography>
+								<Typography variant="h6">{data?.greeting}</Typography>
 							</>
 						)}
 					</Stack>
