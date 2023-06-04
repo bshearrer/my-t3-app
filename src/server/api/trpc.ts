@@ -6,12 +6,17 @@ import { ZodError } from 'zod';
 import { prisma } from '../db';
 
 export const createTRPCContext = (opts: CreateNextContextOptions) => {
-	const userId = getAuth(opts.req).userId;
-
+	const session = getAuth(opts.req);
+	const { userId, sessionClaims } = session;
+	const { role } =
+		sessionClaims && sessionClaims.publicMetadata
+			? (sessionClaims?.publicMetadata as { role: string | null | undefined })
+			: { role: null };
 	return {
 		prisma,
 		clerk: {
 			userId,
+			role,
 		},
 	};
 };
@@ -29,8 +34,16 @@ const t = initTRPC.context<typeof createTRPCContext>().create({
 	},
 });
 
-const isAuthed = t.middleware(({ next, ctx }) => {
+const isLoggedIn = t.middleware(({ next, ctx }) => {
 	if (!ctx.clerk.userId) {
+		throw new TRPCError({ code: 'UNAUTHORIZED' });
+	}
+	return next();
+});
+
+const isAdminRole = t.middleware(({ next, ctx }) => {
+	const role = ctx.clerk.role;
+	if (!role || role !== 'admin') {
 		throw new TRPCError({ code: 'UNAUTHORIZED' });
 	}
 	return next();
@@ -39,4 +52,5 @@ const isAuthed = t.middleware(({ next, ctx }) => {
 export const createTRPCRouter = t.router;
 
 export const publicProcedure = t.procedure;
-export const protectedProcedure = t.procedure.use(isAuthed);
+export const protectedProcedure = t.procedure.use(isLoggedIn);
+export const adminProcedure = t.procedure.use(isLoggedIn).use(isAdminRole);
