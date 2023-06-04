@@ -8,12 +8,23 @@ We try to keep this project as simple as possible, so you can start with just th
 
 If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
 
-💅🏼- [Next.js](https://nextjs.org)
+-   [Next.js](https://nextjs.org) (React Framework)
+-   [MUI](https://mui.com) (React UI Framework)
+-   [tRPC](https://trpc.io) (RPC Framework)
+-   [Prisma](https://prisma.io) (Database ORM)
+-   [MongoDB](https://mongodb.com) (Database)
+-   [Clerk](https://clerk.dev) (Authentication)
+-   [Zod](https://zod.dev/) (Schema Validation)
+-   [Typescript](https://typescriptlang.org) (Language)
+-   [Tanstack-Query](https://tanstack.com/query/latest) (Query Library)
 
--   [NextAuth.js](https://next-auth.js.org)
--   [Prisma](https://prisma.io)
--   [Tailwind CSS](https://tailwindcss.com)
--   [tRPC](https://trpc.io)
+#### Things to add still
+
+-   [React-Hook-Form](https://react-hook-form.com/) (Form Validation)
+-   [Date-FNS](https://date-fns.org) (Date Utility Library)
+-   [React-Use](https://streamich.github.io/react-use/) (React Hooks Library)
+-   [Zustand](https://docs.pmnd.rs/zustand/getting-started/introduction) (State Management)
+-   [Lodash](https://lodash.com/) (Utility Library)
 
 ## Learn More
 
