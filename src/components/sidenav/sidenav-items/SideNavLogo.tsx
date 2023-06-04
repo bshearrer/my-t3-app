@@ -15,7 +15,7 @@ export const SideNavLogo = () => {
 				}}
 			>
 				<Link href="/">
-					<Image src="/gitwit.svg" alt="gitwit logo" width={50} height={50} />
+					<Image src="/gitwit.svg" alt="gitwit logo" width={50} height={50} priority />
 				</Link>
 			</Box>
 		</ListItem>
