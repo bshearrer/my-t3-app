@@ -6,8 +6,8 @@ export const greetingService = publicProcedure.input(z.object({ text: z.string()
 	const clerkData = ctx.clerk.userId ? await clerkClient.users.getUser(ctx.clerk.userId) : null;
 
 	const greeting = ctx.clerk.userId
-		? `hello, ${clerkData?.firstName ? clerkData.firstName : input.text}`
-		: `hello, ${input.text}`;
+		? `Hello, ${clerkData?.firstName ? clerkData.firstName : input.text}`
+		: `Hello, ${input.text}`;
 	return {
 		greeting,
 	};
