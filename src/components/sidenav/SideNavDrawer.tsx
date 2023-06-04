@@ -2,22 +2,17 @@ import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import PeopleIcon from '@mui/icons-material/People';
 import { Drawer, List } from '@mui/material';
 import { useState } from 'react';
-import theme from 'src/styles/theme';
 import { SideNavDrawerItem } from './SideNavDrawerItem';
 import { SideNavLogo } from './SideNavLogo';
 import { SideNavToggleButton } from './SideNavToggleButton';
 import { SideNavUserItem } from './SideNavUserItem';
-
-type DrawerItemType = {
-	href: string;
-	icon: React.ReactNode;
-	text: string;
-};
-
-const TEXT_COLOR = theme.palette.primary.main;
-const HOVER_COLOR = '#f5f5f5';
-const CLOSED_DRAWER_WIDTH = 75;
-const OPEN_DRAWER_WIDTH = 220;
+import {
+	CLOSED_DRAWER_WIDTH,
+	HOVER_COLOR,
+	OPEN_DRAWER_WIDTH,
+	TEXT_COLOR,
+	type DrawerItemType,
+} from './util/sidenav-util';
 
 export const SideNavDrawer = () => {
 	const [open, setOpen] = useState(false);
