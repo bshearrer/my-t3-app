@@ -1,6 +1,6 @@
 import { clerkClient } from '@clerk/nextjs';
-import { publicProcedure } from '../../trpc';
 import { z } from 'zod';
+import { publicProcedure } from '../../trpc';
 
 export const greetingService = publicProcedure
 	.input(z.object({ text: z.string() }))
@@ -10,10 +10,10 @@ export const greetingService = publicProcedure
 			: null;
 
 		const greeting = ctx.clerk.userId
-			? `hello! ${
+			? `hello, ${
 					clerkData?.firstName ? clerkData.firstName : input.text
 			  }`
-			: `hello! ${input.text}`;
+			: `hello, ${input.text}`;
 		return {
 			greeting,
 		};

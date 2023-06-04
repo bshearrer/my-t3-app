@@ -1,9 +1,10 @@
+import { SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
 import {
 	Box,
 	Card,
-	CardActionArea,
 	CardContent,
 	Skeleton,
+	Stack,
 	Typography,
 } from '@mui/material';
 import { type NextPage } from 'next';
@@ -11,7 +12,7 @@ import { api } from 'src/utils/api';
 
 const Home: NextPage = () => {
 	const { data, isLoading } = api.example.greeting.useQuery({
-		text: 'from tRPC',
+		text: 'world',
 	});
 
 	return (
@@ -27,21 +28,37 @@ const Home: NextPage = () => {
 				sx={{
 					width: '50%',
 					height: '30%',
-					display: 'flex',
-					textAlign: 'center',
 				}}
 			>
-				<CardActionArea>
-					<CardContent>
-						<Typography>
-							{isLoading ? (
-								<Skeleton sx={{ height: '50px' }} />
-							) : (
-								data?.greeting
-							)}
-						</Typography>
-					</CardContent>
-				</CardActionArea>
+				<CardContent sx={{ height: '100%' }}>
+					<Stack
+						height={'100%'}
+						justifyContent={'center'}
+						alignItems={'center'}
+						spacing={2}
+					>
+						{isLoading ? (
+							<>
+								<Skeleton
+									sx={{ width: '50%', height: '45px' }}
+								/>
+								<Skeleton
+									sx={{ width: '15%', height: '45px' }}
+								/>
+							</>
+						) : (
+							<>
+								<Typography>{data?.greeting}</Typography>
+								<SignedIn>
+									<UserButton afterSignOutUrl="/" />
+								</SignedIn>
+								<SignedOut>
+									<SignInButton />
+								</SignedOut>
+							</>
+						)}
+					</Stack>
+				</CardContent>
 			</Card>
 		</Box>
 	);

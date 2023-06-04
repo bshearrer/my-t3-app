@@ -4,6 +4,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
 import { type AppProps, type AppType } from 'next/app';
 import Head from 'next/head';
+import { GlobalLayout } from 'src/components/layout/GlobalLayout';
 import { AlertProvider } from 'src/providers/AlertProvider';
 import createEmotionCache from 'src/styles/createEmotionCache';
 import 'src/styles/globals.css';
@@ -38,7 +39,9 @@ const MyApp: AppType = (props: MyAppProps) => {
 				<ThemeProvider theme={theme}>
 					<CssBaseline />
 					<AlertProvider>
-						<Component {...pageProps} />
+						<GlobalLayout>
+							<Component {...pageProps} />
+						</GlobalLayout>
 					</AlertProvider>
 				</ThemeProvider>
 			</CacheProvider>
