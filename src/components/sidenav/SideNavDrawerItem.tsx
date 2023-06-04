@@ -1,4 +1,4 @@
-import { ListItem, Stack, Typography } from '@mui/material';
+import { Box, ListItem, Stack, Typography } from '@mui/material';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
@@ -33,11 +33,10 @@ export const SideNavDrawerItem = ({
 					'&:hover': {
 						bgcolor: hoverColor,
 					},
-					ml: 1,
 				}}
 			>
 				<Stack direction={'row'} spacing={2}>
-					{icon}
+					<Box ml={1}>{icon}</Box>
 					{open && <Typography noWrap>{text}</Typography>}
 				</Stack>
 			</ListItem>
