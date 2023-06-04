@@ -16,7 +16,7 @@ If you are not familiar with the different technologies used in this project, pl
 -   [Clerk](https://clerk.dev) (Authentication) <img src="https://clerk.dev/favicon.ico" alt="Clerk" width="16" height="16" />
 -   [Zod](https://zod.dev/) (Schema Validation) <img src="https://zod.dev/favicon.ico" alt="Zod" width="16" height="16" />
 -   [Typescript](https://typescriptlang.org) (Language) <img src="https://simpleicons.org/icons/typescript.svg" alt="Typescript" width="16" height="16" />
--   [Tanstack-Query](https://tanstack.com/query/latest) (Query Library) <img src="https://simpleicons.org/icons/typescript.svg" alt="Tanstack-Query" width="16" height="16" />
+-   [Tanstack-Query](https://tanstack.com/query/latest) (Query Library) <img src="https://simpleicons.org/icons/javascript.svg" alt="Tanstack-Query" width="16" height="16" />
 
 #### Things to add still
 
