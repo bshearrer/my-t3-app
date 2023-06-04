@@ -16,7 +16,7 @@ export const SideNavToggleButton = ({
 		<ListItem>
 			<IconButton
 				onClick={() => setOpen(!open)}
-				sx={{ color: textColor, ml: '-6.5px' }}
+				sx={{ color: textColor }}
 			>
 				{open ? <ChevronLeftIcon /> : <ChevronRightIcon />}
 			</IconButton>

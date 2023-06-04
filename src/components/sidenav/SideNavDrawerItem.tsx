@@ -33,6 +33,7 @@ export const SideNavDrawerItem = ({
 					'&:hover': {
 						bgcolor: hoverColor,
 					},
+					ml: 1,
 				}}
 			>
 				<Stack direction={'row'} spacing={2}>

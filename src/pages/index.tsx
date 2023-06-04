@@ -1,4 +1,3 @@
-import { SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
 import {
 	Box,
 	Card,
@@ -49,12 +48,6 @@ const Home: NextPage = () => {
 						) : (
 							<>
 								<Typography>{data?.greeting}</Typography>
-								<SignedIn>
-									<UserButton afterSignOutUrl="/" />
-								</SignedIn>
-								<SignedOut>
-									<SignInButton />
-								</SignedOut>
 							</>
 						)}
 					</Stack>

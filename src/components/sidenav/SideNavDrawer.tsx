@@ -3,8 +3,10 @@ import PeopleIcon from '@mui/icons-material/People';
 import { Drawer, List } from '@mui/material';
 import { useState } from 'react';
 import theme from 'src/styles/theme';
-import { SideNavDrawerItem } from './SidenavDrawerItem';
-import { SideNavToggleButton } from './SidenavToggleButton';
+import { SideNavDrawerItem } from './SideNavDrawerItem';
+import { SideNavLogo } from './SideNavLogo';
+import { SideNavToggleButton } from './SideNavToggleButton';
+import { SideNavUserItem } from './SideNavUserItem';
 
 type DrawerItemType = {
 	href: string;
@@ -14,7 +16,7 @@ type DrawerItemType = {
 
 const TEXT_COLOR = theme.palette.primary.main;
 const HOVER_COLOR = '#f5f5f5';
-const CLOSED_DRAWER_WIDTH = 60;
+const CLOSED_DRAWER_WIDTH = 75;
 const OPEN_DRAWER_WIDTH = 220;
 
 export const SideNavDrawer = () => {
@@ -46,7 +48,14 @@ export const SideNavDrawer = () => {
 				},
 			}}
 		>
-			<List>
+			<List
+				sx={{
+					height: '100vh',
+					display: 'flex',
+					flexDirection: 'column',
+				}}
+			>
+				<SideNavLogo />
 				<SideNavToggleButton
 					open={open}
 					setOpen={setOpen}
@@ -63,6 +72,7 @@ export const SideNavDrawer = () => {
 						hoverColor={HOVER_COLOR}
 					/>
 				))}
+				<SideNavUserItem textColor={TEXT_COLOR} />
 			</List>
 		</Drawer>
 	);
