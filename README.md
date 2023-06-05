@@ -27,7 +27,7 @@
 -   Public / Private Pages Routes Array ([middleware.ts](./src/middleware.ts))
 -   RBAC
     -   SideNav can render items based on user role ([SideNavDrawer.tsx](./src/components/shared/layouts/sidenav/SideNavDrawer.tsx))
-    -   Page can render based on user role with getServerSideProps ([index.tsx](./src/pages/admin/index.tsx))
+    -   Page can render based on user role with getServerSideProps ([index.tsx](./src/pages/admin/index.tsx)) ...idea from seth's project
     -   Logged In & Admin protected api routes ([trpc.ts](./src/server/api/trpc.ts))
 
 ### Component Library, _MUI_

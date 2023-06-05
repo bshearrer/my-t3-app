@@ -1,8 +1,7 @@
-import { getAuth, type User } from '@clerk/nextjs/server';
+import { type User } from '@clerk/nextjs/server';
 import { Box } from '@mui/material';
 import { DataGridPro, type GridColDef } from '@mui/x-data-grid-pro';
-import { type GetServerSidePropsContext } from 'next';
-import { getUserRole } from 'src/server/api/helpers/getUserRole';
+import { withRole } from 'src/server/api/helpers/withRole';
 import { UserRoles } from 'src/types/types';
 import { api } from 'src/utils/api';
 
@@ -49,20 +48,4 @@ export default function AdminPage() {
 	);
 }
 
-export const getServerSideProps = (context: GetServerSidePropsContext) => {
-	const session = getAuth(context.req);
-	const role = getUserRole(session);
-
-	if (role !== UserRoles.ADMIN) {
-		return {
-			redirect: {
-				destination: '/',
-				permanent: false,
-			},
-		};
-	}
-
-	return {
-		props: {},
-	};
-};
+export const getServerSideProps = withRole(UserRoles.ADMIN);
