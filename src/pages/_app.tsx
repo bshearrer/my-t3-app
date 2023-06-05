@@ -2,6 +2,7 @@ import { ClerkProvider } from '@clerk/nextjs';
 import { CacheProvider, type EmotionCache } from '@emotion/react';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
+import { LicenseInfo } from '@mui/x-data-grid-pro';
 import { type AppProps, type AppType } from 'next/app';
 import Head from 'next/head';
 import { GlobalLayout } from 'src/components/layout/GlobalLayout';
@@ -12,6 +13,9 @@ import theme from 'src/styles/theme';
 import { api } from 'src/utils/api';
 
 const clientSideEmotionCache = createEmotionCache();
+LicenseInfo.setLicenseKey(
+	'4bc0373304a349672f01dddcda48e9e1Tz01NjUwNCxFPTE3MDMyNjE4MTEwNzEsUz1wcm8sTE09c3Vic2NyaXB0aW9uLEtWPTI=',
+);
 
 export interface MyAppProps extends AppProps {
 	emotionCache?: EmotionCache;
