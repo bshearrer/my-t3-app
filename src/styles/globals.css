@@ -14,3 +14,9 @@ a {
 * {
 	box-sizing: border-box;
 }
+
+/* Resizes the clerk user button  */
+.cl-internal-11ewti4 {
+	width: 3rem !important;
+	height: 3rem !important;
+}
