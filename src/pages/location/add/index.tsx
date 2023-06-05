@@ -1,5 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Button } from '@mui/material';
+import { Box, Button, Card, CardContent, Stack } from '@mui/material';
 import { useForm } from 'react-hook-form';
 import { FormTextField } from 'src/components/layout/form-inputs/FormTextField';
 import { useAlert } from 'src/hooks/useAlert';
@@ -25,19 +25,36 @@ export default function AddLocation() {
 
 	const alert = useAlert();
 	const onSubmit = (data: FormData) => {
-		console.log(data);
 		alert.addAlert({
-			message: 'Location added successfully',
+			message: `${data.address} added successfully!`,
 			severity: 'success',
 		});
 	};
 
 	return (
-		<form onSubmit={(e) => void handleSubmit(onSubmit)(e)}>
-			<FormTextField control={control} name="address" label="Address" />
-			<Button type="submit" disabled={isSubmitting}>
-				Submit
-			</Button>
-		</form>
+		<Box
+			display={'flex'}
+			justifyContent={'center'}
+			alignItems={'center'}
+			height={'100vh'}
+			width={'100vw'}
+			bgcolor={'#f5f5f5'}
+		>
+			<Card
+				sx={{
+					width: '50%',
+					height: '30%',
+				}}
+			>
+				<CardContent sx={{ height: '100%' }}>
+					<Stack height={'100%'} justifyContent={'center'} alignItems={'center'} spacing={2}>
+						<FormTextField control={control} name="address" label="Address" />
+						<Button type="submit" disabled={isSubmitting} onClick={(e) => void handleSubmit(onSubmit)(e)}>
+							Submit
+						</Button>
+					</Stack>
+				</CardContent>
+			</Card>
+		</Box>
 	);
 }
