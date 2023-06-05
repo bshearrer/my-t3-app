@@ -34,7 +34,7 @@ export const AddLocationForm = () => {
 
 	return (
 		<>
-			<FormTextField control={control} name="address" label="Address" />
+			<FormTextField control={control} name="address" label="Address" required />
 			<Button type="submit" disabled={isSubmitting} onClick={(e) => void handleSubmit(onSubmit)(e)}>
 				Submit
 			</Button>
