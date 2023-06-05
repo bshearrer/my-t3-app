@@ -1,12 +1,17 @@
-import { Box } from '@mui/material';
 import { type PropsWithChildren } from 'react';
-import { SideNavDrawer } from './sidenav/SideNavDrawer';
+import { Nav } from './nav/Nav';
 
 export const GlobalLayout = ({ children }: PropsWithChildren) => {
 	return (
-		<Box display={'flex'}>
-			<SideNavDrawer />
+		<>
+			<Nav />
 			{children}
-		</Box>
+		</>
 	);
+	// return (
+	// 	<Box display={'flex'}>
+	// 		<SideNavDrawer />
+	// 		{children}
+	// 	</Box>
+	// );
 };
