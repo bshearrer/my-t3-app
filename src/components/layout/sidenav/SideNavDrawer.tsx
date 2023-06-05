@@ -1,5 +1,5 @@
+import AddLocationAltIcon from '@mui/icons-material/AddLocationAlt';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
-import PeopleIcon from '@mui/icons-material/People';
 import { useState } from 'react';
 import { UserRoles } from 'src/types/types';
 import { SideNavToggleButton } from './/sidenav-items/SideNavToggleButton';
@@ -14,9 +14,9 @@ export const SideNavDrawer = () => {
 
 	const drawerItems: DrawerItemType[] = [
 		{
-			href: '/users',
-			icon: <PeopleIcon />,
-			text: 'Users',
+			href: '/location/add',
+			icon: <AddLocationAltIcon />,
+			text: 'Add Location',
 		},
 		{
 			href: '/admin',

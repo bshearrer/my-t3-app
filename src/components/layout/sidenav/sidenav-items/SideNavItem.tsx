@@ -32,7 +32,7 @@ export const SideNavItem = ({ href, open, icon, text, role }: SideNavItemProps):
 					},
 				}}
 			>
-				<Stack direction={'row'} spacing={2}>
+				<Stack direction={'row'} spacing={2} alignItems={'center'}>
 					<Box ml={1}>{icon}</Box>
 					{open && <Typography noWrap>{text}</Typography>}
 				</Stack>
