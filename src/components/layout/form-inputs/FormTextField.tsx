@@ -1,28 +1,22 @@
 import { TextField, type TextFieldProps } from '@mui/material';
-import { Controller, type Control } from 'react-hook-form';
+import { Controller, useFormState, type Control, type Path } from 'react-hook-form';
 
-interface DefaultFieldValues {
-	[key: string]: string | number | boolean | null;
-}
+type DefaultFieldValues = Record<string, string | number | boolean | null>;
 
-type FormTextFieldProps<T extends DefaultFieldValues = DefaultFieldValues> = {
+type FormTextFieldProps<T extends DefaultFieldValues> = {
 	control: Control<T>;
 	name: keyof T;
 	label: string;
-	defaultValue: T[keyof T];
-	error: boolean;
-	helperText: string | null | undefined;
-} & TextFieldProps;
+} & Omit<TextFieldProps, 'defaultValue'>;
 
-export const FormTextField = ({
+export const FormTextField = <T extends DefaultFieldValues>({
 	control,
 	name,
 	label,
-	defaultValue,
-	error,
-	helperText,
 	...textFieldProps
-}: FormTextFieldProps) => {
+}: FormTextFieldProps<T>) => {
+	const { errors } = useFormState({ control });
+	const error = !!errors[name];
 	return (
 		<Controller
 			render={({ field }) => (
@@ -30,13 +24,12 @@ export const FormTextField = ({
 					{...field}
 					{...textFieldProps}
 					label={label}
-					defaultValue={defaultValue}
 					error={error}
-					helperText={helperText}
+					helperText={(errors[name]?.message as string) || ''}
 					fullWidth
 				/>
 			)}
-			name={name}
+			name={name as Path<T>}
 			control={control}
 		/>
 	);
