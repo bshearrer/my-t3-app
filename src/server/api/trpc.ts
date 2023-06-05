@@ -4,10 +4,12 @@ import { type CreateNextContextOptions } from '@trpc/server/adapters/next';
 import superjson from 'superjson';
 import { ZodError } from 'zod';
 import { prisma } from '../db';
+import { getUserRole } from './helpers/getUserRole';
+import { UserRoles } from 'src/types/types';
 
 export const createTRPCContext = (opts: CreateNextContextOptions) => {
 	const session = getAuth(opts.req);
-	const { userId, sessionClaims } = session;
+	const { userId } = session;
 
 	/*
 	 *  -- HOW TO SETUP ROLES IN CLERK --
@@ -17,10 +19,10 @@ export const createTRPCContext = (opts: CreateNextContextOptions) => {
 	 * 4. Click the Edit button next to "Customize Session Token", and add { "publicMetadata": "{{user.public_metadata}}" }
 	 * 5. Click Save, and you are finished.
 	 */
-	const { role } =
-		sessionClaims && sessionClaims.publicMetadata
-			? (sessionClaims?.publicMetadata as { role: string | null | undefined })
-			: { role: null };
+	const role = getUserRole(session);
+	// sessionClaims && sessionClaims.publicMetadata
+	// 	? (sessionClaims.publicMetadata as { role: string | null | undefined })
+	// 	: { role: null };
 
 	return {
 		prisma,
@@ -53,7 +55,7 @@ const isLoggedIn = t.middleware(({ next, ctx }) => {
 
 const isAdminRole = t.middleware(({ next, ctx }) => {
 	const role = ctx.clerk.role;
-	if (!role || role !== 'admin') {
+	if (!role || role !== UserRoles.ADMIN) {
 		throw new TRPCError({ code: 'UNAUTHORIZED' });
 	}
 	return next();

@@ -1,6 +1,7 @@
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import PeopleIcon from '@mui/icons-material/People';
 import { useState } from 'react';
+import { UserRoles } from 'src/types/types';
 import { SideNavToggleButton } from './/sidenav-items/SideNavToggleButton';
 import { SideNavItem } from './sidenav-items/SideNavItem';
 import { SideNavLogo } from './sidenav-items/SideNavLogo';
@@ -21,7 +22,7 @@ export const SideNavDrawer = () => {
 			href: '/admin',
 			icon: <AdminPanelSettingsIcon />,
 			text: 'Admin Settings',
-			role: 'admin',
+			role: UserRoles.ADMIN,
 		},
 	];
 
