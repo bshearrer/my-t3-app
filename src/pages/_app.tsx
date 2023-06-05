@@ -5,7 +5,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import { LicenseInfo } from '@mui/x-data-grid-pro';
 import { type AppProps, type AppType } from 'next/app';
 import Head from 'next/head';
-import { GlobalLayout } from 'src/components/layout/GlobalLayout';
+import { GlobalLayout } from 'src/components/shared/layout/GlobalLayout';
 import { AlertProvider } from 'src/providers/AlertProvider';
 import createEmotionCache from 'src/styles/createEmotionCache';
 import 'src/styles/globals.css';
