@@ -30,6 +30,7 @@ export const AddLocationForm = () => {
 			message: `${data.address} added successfully!`,
 			severity: 'success',
 		});
+		// Create a mutation and add the location to the database here //
 	};
 
 	return (
