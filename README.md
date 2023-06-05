@@ -1,16 +1,16 @@
 # Gitwit React Tech Stack
+
+## Primary Technologies
+-   [Typescript](https://typescriptlang.org) (Language)
 -   [Next.js](https://nextjs.org) (React Framework)
 -   [MUI](https://mui.com) (React UI Framework)
--   [tRPC](https://trpc.io) (RPC Framework)
 -   [Prisma](https://prisma.io) (Database ORM)
 -   [MongoDB](https://mongodb.com) (Database)
 -   [Clerk](https://clerk.dev) (Authentication)
--   [Zod](https://zod.dev/) (Schema Validation)
--   [Typescript](https://typescriptlang.org) (Language)
+-   [tRPC](https://trpc.io) (RPC Framework)
 -   [Tanstack-Query](https://tanstack.com/query/latest) (Query Library)
-
-#### Things to add still
-
+### Additional Choices
+-   [Zod](https://zod.dev/) (Schema Validation)
 -   [React-Hook-Form](https://react-hook-form.com/) (Form Validation)
 -   [Date-FNS](https://date-fns.org) (Date Utility Library)
 -   [React-Use](https://streamich.github.io/react-use/) (React Hooks Library)
