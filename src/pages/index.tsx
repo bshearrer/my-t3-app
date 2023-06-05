@@ -1,10 +1,11 @@
+import { SignedIn, SignedOut } from '@clerk/nextjs';
 import { Box, Card, CardContent, Skeleton, Stack, Typography } from '@mui/material';
 import { type NextPage } from 'next';
 import { api } from 'src/utils/api';
 
 const Home: NextPage = () => {
 	const { data, isLoading } = api.example.greeting.useQuery({
-		text: 'world',
+		text: 'user',
 	});
 
 	return (
@@ -31,7 +32,12 @@ const Home: NextPage = () => {
 							</>
 						) : (
 							<>
-								<Typography variant="h6">{data?.greeting}</Typography>
+								<SignedIn>
+									<Typography variant="h6">{data?.greeting}</Typography>
+								</SignedIn>
+								<SignedOut>
+									<Typography variant="h6">Hello, world</Typography>
+								</SignedOut>
 							</>
 						)}
 					</Stack>
