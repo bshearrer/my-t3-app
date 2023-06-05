@@ -20,9 +20,6 @@ export const createTRPCContext = (opts: CreateNextContextOptions) => {
 	 * 5. Click Save, and you are finished.
 	 */
 	const role = getUserRole(session);
-	// sessionClaims && sessionClaims.publicMetadata
-	// 	? (sessionClaims.publicMetadata as { role: string | null | undefined })
-	// 	: { role: null };
 
 	return {
 		prisma,

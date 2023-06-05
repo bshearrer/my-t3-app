@@ -1,6 +1,7 @@
 # Gitwit React Tech Stack
 
 ## Primary Technologies
+
 -   [Typescript](https://typescriptlang.org) (Language)
 -   [Next.js](https://nextjs.org) (React Framework)
 -   [MUI](https://mui.com) (React UI Framework)
@@ -9,31 +10,29 @@
 -   [Clerk](https://clerk.dev) (Authentication)
 -   [tRPC](https://trpc.io) (RPC Framework)
 -   [Tanstack-Query](https://tanstack.com/query/latest) (Query Library)
-### Additional Choices
 -   [Zod](https://zod.dev/) (Schema Validation)
 -   [React-Hook-Form](https://react-hook-form.com/) (Form Validation)
+
+### Additional Choices To Consider
+
 -   [Date-FNS](https://date-fns.org) (Date Utility Library)
 -   [React-Use](https://streamich.github.io/react-use/) (React Hooks Library)
 -   [Zustand](https://docs.pmnd.rs/zustand/getting-started/introduction) (State Management)
 -   [Lodash](https://lodash.com/) (Utility Library)
 
-## Learn More
+## What's Included?
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+### Auth, _Clerk_
 
--   [Documentation](https://create.t3.gg/)
--   [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+-   Public / Private Pages Routes Array ([middleware.ts](./src/middleware.ts))
+-   RBAC
+    -   SideNav can render items based on user role ([SideNavDrawer.tsx](./src/components/shared/layouts/sidenav/SideNavDrawer.tsx))
+    -   Page can render based on user role with getServerSideProps ([index.tsx](./src/pages/admin/index.tsx))
+    -   Logged In & Admin protected api routes ([trpc.ts](./src/server/api/trpc.ts))
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+### Component Library, _MUI_
 
-## How do I deploy this?
-
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
-
-## Things to add
-
-### Clerk
-
--   Public vs Private pages in middleware.ts with Clerk
--   Clerk roles setup (currently described setup in trpc.ts)
--   RBAC Page protection with Clerk
+-   Example dialog component opened / closed based on router change ([DialogExample.tsx](./src/components/home/DialogExample.tsx))
+-   Global Layout with a simple `<SideNavDrawer />` component ([GlobalLayout.tsx](./src/components/shared/layouts/GlobalLayout.tsx))
+-   Example form with validation using react-hook-form ([AddLocationForm.tsx](./src/components/location/AddLocationForm.tsx))
+-   Custom alert popup hook ([useAlert.ts](./src/hooks/useAlert.ts))
