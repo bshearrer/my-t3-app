@@ -7,7 +7,7 @@ export const TEXT_COLOR = theme.palette.primary.main;
 export const HOVER_COLOR = '#f5f5f5';
 
 /*
- * Changing the following values may result in needing to adjust margin
+ * [WARNING] Changing the following values may result in needing to adjust margin
  * values in the sidenav drawer components.
  */
 export const CLOSED_DRAWER_WIDTH = 75;

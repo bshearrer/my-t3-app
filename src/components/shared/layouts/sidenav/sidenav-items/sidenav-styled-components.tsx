@@ -1,5 +1,5 @@
 import { Drawer, List, styled } from '@mui/material';
-import { CLOSED_DRAWER_WIDTH, OPEN_DRAWER_WIDTH } from './sidenav-util';
+import { CLOSED_DRAWER_WIDTH, OPEN_DRAWER_WIDTH } from '../util/sidenav-util';
 
 export const SideNav = styled(Drawer, {
 	shouldForwardProp: (prop) => prop !== 'open',
