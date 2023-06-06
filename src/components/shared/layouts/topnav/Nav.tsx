@@ -1,5 +1,5 @@
 import { AppBar, Box, Toolbar, useMediaQuery } from '@mui/material';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import theme from 'src/styles/theme';
 import { MobileNavDrawer } from './mobile-nav-items/NavMobileDrawer';
 import { NavItems } from './nav-items/NavItems';
@@ -41,6 +41,7 @@ type NavProps = {
 	drawerActiveItemColor?: string;
 	drawerImagePosition?: 'left' | 'center' | 'right';
 	drawerItemPosition?: 'start' | 'center' | 'end';
+	drawerBackgroundColor?: string;
 };
 export const TopNav = ({
 	logoSrc,
@@ -59,9 +60,14 @@ export const TopNav = ({
 	drawerActiveItemColor,
 	drawerImagePosition,
 	drawerItemPosition,
+	drawerBackgroundColor,
 }: NavProps) => {
 	const [openMobileDrawer, setOpenMobileDrawer] = useState(false);
 	const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
+	useEffect(() => {
+		if (!isMobile) setOpenMobileDrawer(false);
+	}, [isMobile]);
 
 	return (
 		<Box component={'nav'}>
@@ -106,6 +112,7 @@ export const TopNav = ({
 				drawerActiveItemColor={drawerActiveItemColor ?? ''}
 				drawerImagePosition={drawerImagePosition ?? 'center'}
 				drawerItemPosition={drawerItemPosition ?? 'start'}
+				drawerBackgroundColor={drawerBackgroundColor ?? '#FFF'}
 			/>
 		</Box>
 	);

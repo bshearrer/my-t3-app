@@ -19,6 +19,7 @@ type MobileNavDrawerProps = {
 	drawerActiveItemColor: string;
 	drawerImagePosition: 'left' | 'center' | 'right';
 	drawerItemPosition: 'start' | 'center' | 'end';
+	drawerBackgroundColor: string;
 };
 export const MobileNavDrawer = ({
 	navItems,
@@ -36,6 +37,7 @@ export const MobileNavDrawer = ({
 	drawerItemPosition,
 	drawerLogoSrc,
 	logoSrc,
+	drawerBackgroundColor,
 }: MobileNavDrawerProps) => {
 	if (!isMobile) return null;
 	return (
@@ -47,7 +49,7 @@ export const MobileNavDrawer = ({
 				keepMounted: true, // Better open performance on mobile.
 			}}
 			sx={{
-				'& .MuiDrawer-paper': { width: 240 },
+				'& .MuiDrawer-paper': { width: 240, bgcolor: drawerBackgroundColor },
 			}}
 		>
 			<Box onClick={() => setOpenMobileDrawer(!openMobileDrawer)} sx={{ textAlign: 'center' }}>
