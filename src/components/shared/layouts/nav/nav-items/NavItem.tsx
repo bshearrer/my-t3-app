@@ -26,6 +26,7 @@ export const NavItem = ({ item, activeItemColor }: NavItemProps) => {
 		<Link href={item.href}>
 			{item.text ? (
 				<Button
+					endIcon={item.icon}
 					sx={{
 						color: activePage
 							? activeItemColor
