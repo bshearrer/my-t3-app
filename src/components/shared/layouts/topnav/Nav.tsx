@@ -25,7 +25,7 @@ type NavItemWithIcon = BaseNavItemType & {
 export type NavItemType = NavItemWithText | NavItemWithIcon;
 
 type NavProps = {
-	logoHref: string;
+	logoSrc: string;
 	navItems: NavItemType[];
 	navPosition?: 'static' | 'fixed' | 'absolute' | 'sticky' | 'relative';
 	navBackgroundColor?: string;
@@ -34,7 +34,7 @@ type NavProps = {
 	activeItemColor?: string;
 	logoWidth?: number;
 	logoHeight?: number;
-	drawerLogoHref?: string;
+	drawerLogoSrc?: string;
 	drawerLogoWidth?: number;
 	drawerLogoHeight?: number;
 	drawerItemColor?: string;
@@ -43,14 +43,14 @@ type NavProps = {
 	drawerItemPosition?: 'start' | 'center' | 'end';
 };
 export const TopNav = ({
-	logoHref,
+	logoSrc,
 	navItems,
 	navPosition,
 	navBackgroundColor,
 	itemsPosition,
 	itemColor,
 	activeItemColor,
-	drawerLogoHref,
+	drawerLogoSrc,
 	logoWidth,
 	logoHeight,
 	drawerLogoWidth,
@@ -68,7 +68,7 @@ export const TopNav = ({
 			<AppBar position={navPosition ?? 'static'} component={'nav'} sx={{ bgcolor: navBackgroundColor }}>
 				<Toolbar>
 					<NavLogo
-						href={logoHref}
+						src={logoSrc}
 						width={logoWidth ?? 50}
 						height={logoHeight ?? 50}
 						itemPosition={itemsPosition ?? 'right'}
@@ -94,9 +94,9 @@ export const TopNav = ({
 				isMobile={isMobile}
 				openMobileDrawer={openMobileDrawer}
 				setOpenMobileDrawer={setOpenMobileDrawer}
-				logoHref={logoHref}
+				logoSrc={logoSrc}
 				navItems={navItems}
-				drawerLogoHref={drawerLogoHref}
+				drawerLogoSrc={drawerLogoSrc}
 				logoWidth={logoWidth}
 				logoHeight={logoHeight}
 				drawerLogoWidth={drawerLogoWidth}

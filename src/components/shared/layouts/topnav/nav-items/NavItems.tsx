@@ -24,7 +24,10 @@ export const NavItems = ({
 }: NavItemsProps) => {
 	if (isMobile) {
 		return (
-			<IconButton color="inherit" onClick={() => setOpenMobileDrawer(!openMobileDrawer)} sx={{ mr: 1 }}>
+			<IconButton
+				onClick={() => setOpenMobileDrawer(!openMobileDrawer)}
+				sx={{ mr: 1, color: itemColor ? itemColor : 'inherit' }}
+			>
 				<MenuIcon />
 			</IconButton>
 		);

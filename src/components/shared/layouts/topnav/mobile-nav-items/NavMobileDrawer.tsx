@@ -6,9 +6,9 @@ import { NavMobileItems } from './NavMobileItems';
 type MobileNavDrawerProps = {
 	openMobileDrawer: boolean;
 	setOpenMobileDrawer: (open: boolean) => void;
-	logoHref: string;
+	logoSrc: string;
 	navItems: NavItemType[];
-	drawerLogoHref?: string;
+	drawerLogoSrc?: string;
 	logoWidth?: number;
 	logoHeight?: number;
 	drawerLogoWidth?: number;
@@ -21,11 +21,9 @@ type MobileNavDrawerProps = {
 	drawerItemPosition: 'start' | 'center' | 'end';
 };
 export const MobileNavDrawer = ({
-	logoHref,
 	navItems,
 	openMobileDrawer,
 	setOpenMobileDrawer,
-	drawerLogoHref,
 	logoWidth,
 	logoHeight,
 	drawerLogoWidth,
@@ -36,6 +34,8 @@ export const MobileNavDrawer = ({
 	drawerActiveItemColor,
 	drawerImagePosition,
 	drawerItemPosition,
+	drawerLogoSrc,
+	logoSrc,
 }: MobileNavDrawerProps) => {
 	if (!isMobile) return null;
 	return (
@@ -52,7 +52,7 @@ export const MobileNavDrawer = ({
 		>
 			<Box onClick={() => setOpenMobileDrawer(!openMobileDrawer)} sx={{ textAlign: 'center' }}>
 				<NavLogo
-					href={drawerLogoHref ?? logoHref}
+					src={drawerLogoSrc ?? logoSrc}
 					isMobile={true}
 					width={logoWidth ?? drawerLogoWidth ?? 50}
 					height={logoHeight ?? drawerLogoHeight ?? 50}
