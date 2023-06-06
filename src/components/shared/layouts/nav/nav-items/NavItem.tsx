@@ -23,7 +23,7 @@ export const NavItem = ({ item, activeItemColor }: NavItemProps) => {
 	const activePage = pathname.includes(item.href);
 
 	return (
-		<Link key={item.href} href={item.href}>
+		<Link href={item.href}>
 			{item.text ? (
 				<Button
 					sx={{
