@@ -8,9 +8,14 @@ import { type NavItemType } from './nav/util/NavUtil';
 export const GlobalLayout = ({ children }: PropsWithChildren) => {
 	const navItems: NavItemType[] = [
 		{
+			href: 'https://www.gitwit.com',
+			text: 'Gitwit.com',
+		},
+		{
 			href: '/location/add',
 			icon: <AddLocationAltIcon />,
 			text: 'Add Location',
+			privatePage: true,
 		},
 		{
 			href: '/admin',

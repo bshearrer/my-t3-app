@@ -13,6 +13,9 @@ type NavItemProps = {
 export const NavItem = ({ item, activeItemColor }: NavItemProps) => {
 	const { pathname } = useRouter();
 	const { user, isLoaded } = useUser();
+
+	if (item.privatePage && !user) return <></>;
+
 	const userHasRole = item.role ? checkUserRole(user, item.role) : true;
 
 	if (item.role && (!isLoaded || !userHasRole)) return <></>;
