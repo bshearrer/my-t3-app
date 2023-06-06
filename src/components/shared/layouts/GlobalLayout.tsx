@@ -1,10 +1,9 @@
 import AddLocationAltIcon from '@mui/icons-material/AddLocationAlt';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
-import { Box } from '@mui/material';
 import { type PropsWithChildren } from 'react';
 import { UserRoles } from 'src/types/types';
-import { type NavItemType } from './nav/Nav';
-import { SideNav, type SideNavItemType } from './sidenav/SideNav';
+import { type SideNavItemType } from './sidenav/SideNav';
+import { TopNav, type NavItemType } from './topnav/Nav';
 
 export const GlobalLayout = ({ children }: PropsWithChildren) => {
 	const navItems: NavItemType[] = [
@@ -41,17 +40,17 @@ export const GlobalLayout = ({ children }: PropsWithChildren) => {
 		},
 	];
 
-	// return (
-	// 	<>
-	// 		<Nav navItems={navItems} logoHref="/gitwit-long.svg" logoWidth={100} />
-	// 		{children}
-	// 	</>
-	// );
-
 	return (
-		<Box display={'flex'}>
-			<SideNav logoSrc="/gitwit-logo-midnight.svg" sideNavItems={sideNavItems} />
+		<>
+			<TopNav navItems={navItems} logoHref="/gitwit-long.svg" logoWidth={100} />
 			{children}
-		</Box>
+		</>
 	);
+
+	// return (
+	// 	<Box display={'flex'}>
+	// 		<SideNav logoSrc="/gitwit-logo-midnight.svg" sideNavItems={sideNavItems} />
+	// 		{children}
+	// 	</Box>
+	// );
 };

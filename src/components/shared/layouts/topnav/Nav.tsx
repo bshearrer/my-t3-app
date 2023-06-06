@@ -40,7 +40,7 @@ type NavProps = {
 	drawerItemColor?: string;
 	drawerActiveItemColor?: string;
 };
-export const Nav = ({
+export const TopNav = ({
 	logoHref,
 	navItems,
 	navPosition,
