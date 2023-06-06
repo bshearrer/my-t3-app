@@ -2,6 +2,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from '@mui/material';
 import { useForm } from 'react-hook-form';
 import { useAlert } from 'src/hooks/useAlert';
+import { api } from 'src/utils/api';
 import { z } from 'zod';
 import { FormTextField } from '../shared/form-inputs/FormTextField';
 
@@ -24,19 +25,23 @@ export const AddLocationForm = () => {
 	});
 
 	const alert = useAlert();
+	const { mutate, isLoading } = api.locations.addLocation.useMutation();
 
 	const onSubmit = (data: FormData) => {
-		alert.addAlert({
-			message: `${data.address} added successfully!`,
-			severity: 'success',
+		mutate(data.address, {
+			onSuccess: () => {
+				alert.addAlert({
+					message: `${data.address} added successfully!`,
+					severity: 'success',
+				});
+			},
 		});
-		// Create a mutation and add the location to the database here //
 	};
 
 	return (
 		<>
 			<FormTextField control={control} name="address" label="Address" required />
-			<Button type="submit" disabled={isSubmitting} onClick={(e) => void handleSubmit(onSubmit)(e)}>
+			<Button type="submit" disabled={isSubmitting || isLoading} onClick={(e) => void handleSubmit(onSubmit)(e)}>
 				Submit
 			</Button>
 		</>
