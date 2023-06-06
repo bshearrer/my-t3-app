@@ -9,8 +9,8 @@ import { SideNav, type SideNavItemType } from './sidenav/SideNav';
 export const GlobalLayout = ({ children }: PropsWithChildren) => {
 	const navItems: NavItemType[] = [
 		{
-			href: 'https://www.gitwit.com',
-			text: 'Gitwit.com',
+			href: 'https://gitwit.com',
+			text: 'Gitwit',
 		},
 		{
 			href: '/location/add',
