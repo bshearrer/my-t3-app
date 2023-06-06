@@ -1,7 +1,7 @@
-import { Box, Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
-import Link from 'next/link';
+import { Box, Drawer } from '@mui/material';
 import { type NavItemType } from '../Nav';
 import { NavLogo } from '../nav-items/NavLogo';
+import { NavMobileItems } from './NavMobileItems';
 
 type MobileNavDrawerProps = {
 	openMobileDrawer: boolean;
@@ -15,6 +15,8 @@ type MobileNavDrawerProps = {
 	drawerLogoHeight?: number;
 	isMobile: boolean;
 	itemColor: string;
+	activeItemColor: string;
+	drawerActiveItemColor: string;
 };
 export const MobileNavDrawer = ({
 	logoHref,
@@ -28,6 +30,8 @@ export const MobileNavDrawer = ({
 	drawerLogoHeight,
 	isMobile,
 	itemColor,
+	activeItemColor,
+	drawerActiveItemColor,
 }: MobileNavDrawerProps) => {
 	if (!isMobile) return null;
 	return (
@@ -50,18 +54,12 @@ export const MobileNavDrawer = ({
 					height={logoHeight ?? drawerLogoHeight ?? 50}
 				/>
 
-				<List>
-					{navItems.map((item) => (
-						<Link href={item.href} key={item.href}>
-							<ListItem disablePadding sx={{ color: itemColor ?? 'inherit' }}>
-								<ListItemButton sx={{ textAlign: 'left' }}>
-									<ListItemIcon sx={{ color: itemColor ?? 'inherit' }}>{item.icon}</ListItemIcon>
-									<ListItemText primary={item.text} />
-								</ListItemButton>
-							</ListItem>
-						</Link>
-					))}
-				</List>
+				<NavMobileItems
+					navItems={navItems}
+					itemColor={itemColor}
+					activeItemColor={activeItemColor}
+					drawerActiveItemColor={drawerActiveItemColor}
+				/>
 			</Box>
 		</Drawer>
 	);

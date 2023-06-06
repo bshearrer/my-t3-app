@@ -38,6 +38,7 @@ type NavProps = {
 	drawerLogoWidth?: number;
 	drawerLogoHeight?: number;
 	drawerItemColor?: string;
+	drawerActiveItemColor?: string;
 };
 export const Nav = ({
 	logoHref,
@@ -52,7 +53,8 @@ export const Nav = ({
 	logoHeight,
 	drawerLogoWidth,
 	drawerLogoHeight,
-	drawerItemColor
+	drawerItemColor,
+	drawerActiveItemColor,
 }: NavProps) => {
 	const [openMobileDrawer, setOpenMobileDrawer] = useState(false);
 	const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
@@ -88,6 +90,8 @@ export const Nav = ({
 				drawerLogoWidth={drawerLogoWidth}
 				drawerLogoHeight={drawerLogoHeight}
 				itemColor={drawerItemColor ?? itemColor ?? ''}
+				activeItemColor={activeItemColor ?? ''}
+				drawerActiveItemColor={drawerActiveItemColor ?? ''}
 			/>
 		</Box>
 	);
