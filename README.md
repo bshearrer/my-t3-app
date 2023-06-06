@@ -33,6 +33,6 @@
 ### Component Library, _MUI_
 
 -   Example dialog component opened / closed based on router change ([DialogExample.tsx](./src/components/home/DialogExample.tsx))
--   Global Layout with a simple `<SideNavDrawer />` component ([GlobalLayout.tsx](./src/components/shared/layouts/GlobalLayout.tsx))
+-   Global Layout with a simple `<TopNav />` or `<SideNav />` component ([GlobalLayout.tsx](./src/components/shared/layouts/GlobalLayout.tsx))
 -   Example form with validation using react-hook-form ([AddLocationForm.tsx](./src/components/location/AddLocationForm.tsx))
 -   Custom alert popup hook ([useAlert.ts](./src/hooks/useAlert.ts))
