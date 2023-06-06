@@ -17,6 +17,8 @@ type MobileNavDrawerProps = {
 	itemColor: string;
 	activeItemColor: string;
 	drawerActiveItemColor: string;
+	drawerImagePosition: 'left' | 'center' | 'right';
+	drawerItemPosition: 'start' | 'center' | 'end';
 };
 export const MobileNavDrawer = ({
 	logoHref,
@@ -32,6 +34,8 @@ export const MobileNavDrawer = ({
 	itemColor,
 	activeItemColor,
 	drawerActiveItemColor,
+	drawerImagePosition,
+	drawerItemPosition,
 }: MobileNavDrawerProps) => {
 	if (!isMobile) return null;
 	return (
@@ -52,6 +56,8 @@ export const MobileNavDrawer = ({
 					isMobile={true}
 					width={logoWidth ?? drawerLogoWidth ?? 50}
 					height={logoHeight ?? drawerLogoHeight ?? 50}
+					itemPosition="center"
+					drawerImagePosition={drawerImagePosition}
 				/>
 
 				<NavMobileItems
@@ -59,6 +65,7 @@ export const MobileNavDrawer = ({
 					itemColor={itemColor}
 					activeItemColor={activeItemColor}
 					drawerActiveItemColor={drawerActiveItemColor}
+					drawerItemPosition={drawerItemPosition}
 				/>
 			</Box>
 		</Drawer>

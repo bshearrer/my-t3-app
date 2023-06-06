@@ -39,6 +39,8 @@ type NavProps = {
 	drawerLogoHeight?: number;
 	drawerItemColor?: string;
 	drawerActiveItemColor?: string;
+	drawerImagePosition?: 'left' | 'center' | 'right';
+	drawerItemPosition?: 'start' | 'center' | 'end';
 };
 export const TopNav = ({
 	logoHref,
@@ -55,6 +57,8 @@ export const TopNav = ({
 	drawerLogoHeight,
 	drawerItemColor,
 	drawerActiveItemColor,
+	drawerImagePosition,
+	drawerItemPosition,
 }: NavProps) => {
 	const [openMobileDrawer, setOpenMobileDrawer] = useState(false);
 	const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
@@ -68,6 +72,7 @@ export const TopNav = ({
 						width={logoWidth ?? 50}
 						height={logoHeight ?? 50}
 						itemPosition={itemsPosition ?? 'right'}
+						drawerImagePosition={'center'}
 					/>
 
 					<Box flexGrow={itemsPosition == 'left' || itemsPosition == 'center' ? 1 : 0}>
@@ -99,6 +104,8 @@ export const TopNav = ({
 				itemColor={drawerItemColor ?? itemColor ?? ''}
 				activeItemColor={activeItemColor ?? ''}
 				drawerActiveItemColor={drawerActiveItemColor ?? ''}
+				drawerImagePosition={drawerImagePosition ?? 'center'}
+				drawerItemPosition={drawerItemPosition ?? 'start'}
 			/>
 		</Box>
 	);

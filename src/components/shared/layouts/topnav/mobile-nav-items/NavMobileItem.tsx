@@ -1,5 +1,5 @@
 import { useUser } from '@clerk/nextjs';
-import { ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
+import { Button, ListItem } from '@mui/material';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import theme from 'src/styles/theme';
@@ -11,8 +11,15 @@ type NavMobileItemProps = {
 	itemColor: string;
 	activeItemColor: string;
 	drawerActiveItemColor: string;
+	drawerItemPosition: 'start' | 'center' | 'end';
 };
-export const NavMobileItem = ({ item, itemColor, activeItemColor, drawerActiveItemColor }: NavMobileItemProps) => {
+export const NavMobileItem = ({
+	item,
+	itemColor,
+	activeItemColor,
+	drawerActiveItemColor,
+	drawerItemPosition,
+}: NavMobileItemProps) => {
 	const { pathname } = useRouter();
 	const { user, isLoaded } = useUser();
 
@@ -26,30 +33,19 @@ export const NavMobileItem = ({ item, itemColor, activeItemColor, drawerActiveIt
 
 	return (
 		<Link href={item.href}>
-			<ListItem disablePadding sx={{ color: itemColor ?? 'inherit' }}>
-				<ListItemButton sx={{ textAlign: 'left' }}>
-					<ListItemIcon
-						sx={{
-							color: activePage
+			<ListItem disablePadding sx={{ display: 'flex', justifyContent: drawerItemPosition, px: 1 }}>
+				<Button
+					startIcon={item.icon}
+					sx={{
+						color: activePage
+							? drawerActiveItemColor ?? activeItemColor
 								? drawerActiveItemColor ?? activeItemColor
-									? drawerActiveItemColor ?? activeItemColor
-									: theme.palette.secondary.main
-								: itemColor ?? 'inherit',
-						}}
-					>
-						{item.icon}
-					</ListItemIcon>
-					<ListItemText
-						primary={item.text}
-						sx={{
-							color: activePage
-								? drawerActiveItemColor ?? activeItemColor
-									? drawerActiveItemColor ?? activeItemColor
-									: theme.palette.secondary.main
-								: itemColor ?? 'inherit',
-						}}
-					/>
-				</ListItemButton>
+								: theme.palette.secondary.main
+							: itemColor ?? 'inherit',
+					}}
+				>
+					{item.text}
+				</Button>
 			</ListItem>
 		</Link>
 	);

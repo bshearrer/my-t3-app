@@ -8,11 +8,12 @@ type NavLogoProps = {
 	width: number;
 	height: number;
 	itemPosition: 'left' | 'center' | 'right';
+	drawerImagePosition: 'left' | 'center' | 'right';
 };
-export const NavLogo = ({ href, isMobile, width, height, itemPosition }: NavLogoProps) => {
+export const NavLogo = ({ href, isMobile, width, height, itemPosition, drawerImagePosition }: NavLogoProps) => {
 	if (isMobile) {
 		return (
-			<Box flexGrow={itemPosition == 'left' ? 0 : 1} display="flex" justifyContent={'center'}>
+			<Box display="flex" justifyContent={drawerImagePosition ?? 'center'} px={2}>
 				<Link href="/" style={{ display: 'flex' }}>
 					<Image src={href} alt="Site Logo" width={width} height={height} priority />
 				</Link>

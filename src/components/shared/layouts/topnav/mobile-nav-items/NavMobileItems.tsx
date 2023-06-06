@@ -7,6 +7,7 @@ type NavMobileItemsProps = {
 	itemColor: string;
 	activeItemColor: string;
 	drawerActiveItemColor: string;
+	drawerItemPosition: 'start' | 'center' | 'end';
 };
 
 export const NavMobileItems = ({
@@ -14,6 +15,7 @@ export const NavMobileItems = ({
 	itemColor,
 	drawerActiveItemColor,
 	activeItemColor,
+	drawerItemPosition,
 }: NavMobileItemsProps) => {
 	return (
 		<List>
@@ -24,6 +26,7 @@ export const NavMobileItems = ({
 					itemColor={itemColor}
 					activeItemColor={activeItemColor}
 					drawerActiveItemColor={drawerActiveItemColor}
+					drawerItemPosition={drawerItemPosition}
 				/>
 			))}
 		</List>

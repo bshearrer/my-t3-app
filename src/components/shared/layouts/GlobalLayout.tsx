@@ -42,7 +42,7 @@ export const GlobalLayout = ({ children }: PropsWithChildren) => {
 
 	return (
 		<>
-			<TopNav navItems={navItems} logoHref="/gitwit-long.svg" logoWidth={100} itemsPosition="right" />
+			<TopNav navItems={navItems} logoHref="/gitwit-long.svg" logoWidth={100} />
 			{children}
 		</>
 	);
