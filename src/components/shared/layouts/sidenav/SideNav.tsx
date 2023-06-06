@@ -6,10 +6,10 @@ import { SideNavItem } from './sidenav-items/SideNavItem';
 import { SideNavLogo } from './sidenav-items/SideNavLogo';
 import { SideNavToggleButton } from './sidenav-items/SideNavToggleButton';
 import { SideNavUserItem } from './sidenav-items/SideNavUserItem';
-import { SideNav, SideNavList } from './sidenav-items/sidenav-styled-components';
+import { SideNavDrawer, SideNavList } from './sidenav-items/sidenav-styled-components';
 import { TEXT_COLOR, type DrawerItemType } from './util/sidenav-util';
 
-export const SideNavDrawer = () => {
+export const SideNav = () => {
 	const [open, setOpen] = useState(false);
 
 	const drawerItems: DrawerItemType[] = [
@@ -27,7 +27,7 @@ export const SideNavDrawer = () => {
 	];
 
 	return (
-		<SideNav open={open} variant="permanent">
+		<SideNavDrawer open={open} variant="permanent">
 			<SideNavList>
 				<SideNavLogo />
 				<SideNavToggleButton open={open} setOpen={setOpen} textColor={TEXT_COLOR} />
@@ -36,6 +36,6 @@ export const SideNavDrawer = () => {
 				))}
 				<SideNavUserItem textColor={TEXT_COLOR} open={open} />
 			</SideNavList>
-		</SideNav>
+		</SideNavDrawer>
 	);
 };
