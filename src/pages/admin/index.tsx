@@ -2,7 +2,7 @@ import { type User } from '@clerk/nextjs/server';
 import { Box } from '@mui/material';
 import { DataGridPro, type GridColDef } from '@mui/x-data-grid-pro';
 import { withRole } from 'src/server/api/helpers/withRole';
-import { UserRoles } from 'src/types/types';
+import { UserRole } from 'src/types/types';
 import { api } from 'src/utils/api';
 
 const columns: GridColDef[] = [
@@ -48,4 +48,4 @@ export default function AdminPage() {
 	);
 }
 
-export const getServerSideProps = withRole(UserRoles.ADMIN);
+export const getServerSideProps = withRole(UserRole.ADMIN);

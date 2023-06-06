@@ -1,7 +1,7 @@
 import AddLocationAltIcon from '@mui/icons-material/AddLocationAlt';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import { type PropsWithChildren } from 'react';
-import { UserRoles } from 'src/types/types';
+import { UserRole } from 'src/types/types';
 import { type SideNavItemType } from './sidenav/SideNav';
 import { TopNav, type NavItemType } from './topnav/Nav';
 
@@ -21,7 +21,7 @@ export const GlobalLayout = ({ children }: PropsWithChildren) => {
 			href: '/admin',
 			icon: <AdminPanelSettingsIcon />,
 			text: 'Admin Settings',
-			role: UserRoles.ADMIN,
+			role: UserRole.ADMIN,
 		},
 	];
 
@@ -36,7 +36,7 @@ export const GlobalLayout = ({ children }: PropsWithChildren) => {
 			href: '/admin',
 			icon: <AdminPanelSettingsIcon />,
 			text: 'Admin Settings',
-			role: UserRoles.ADMIN,
+			role: UserRole.ADMIN,
 		},
 	];
 

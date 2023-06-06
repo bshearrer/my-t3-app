@@ -1,11 +1,11 @@
 import { getAuth } from '@clerk/nextjs/server';
 import { initTRPC, TRPCError } from '@trpc/server';
 import { type CreateNextContextOptions } from '@trpc/server/adapters/next';
+import { UserRole } from 'src/types/types';
 import superjson from 'superjson';
 import { ZodError } from 'zod';
 import { prisma } from '../db';
 import { getUserRole } from './helpers/getUserRole';
-import { UserRoles } from 'src/types/types';
 
 export const createTRPCContext = (opts: CreateNextContextOptions) => {
 	const session = getAuth(opts.req);
@@ -52,7 +52,7 @@ const isLoggedIn = t.middleware(({ next, ctx }) => {
 
 const isAdminRole = t.middleware(({ next, ctx }) => {
 	const role = ctx.clerk.role;
-	if (!role || role !== UserRoles.ADMIN) {
+	if (!role || role !== UserRole.ADMIN) {
 		throw new TRPCError({ code: 'UNAUTHORIZED' });
 	}
 	return next();
