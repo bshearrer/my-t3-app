@@ -7,11 +7,12 @@ type NavLogoProps = {
 	isMobile?: boolean;
 	width: number;
 	height: number;
+	itemPosition: 'left' | 'center' | 'right';
 };
-export const NavLogo = ({ href, isMobile, width, height }: NavLogoProps) => {
+export const NavLogo = ({ href, isMobile, width, height, itemPosition }: NavLogoProps) => {
 	if (isMobile) {
 		return (
-			<Box flexGrow={1} display="flex" justifyContent={'center'}>
+			<Box flexGrow={itemPosition == 'left' ? 0 : 1} display="flex" justifyContent={'center'}>
 				<Link href="/" style={{ display: 'flex' }}>
 					<Image src={href} alt="Site Logo" width={width} height={height} priority />
 				</Link>
@@ -19,7 +20,7 @@ export const NavLogo = ({ href, isMobile, width, height }: NavLogoProps) => {
 		);
 	}
 	return (
-		<Box flexGrow={1}>
+		<Box flexGrow={itemPosition == 'left' ? 0 : 1}>
 			<Link href="/" style={{ display: 'flex', alignItems: 'center' }}>
 				<Image src={href} alt="Site Logo" width={width} height={height} priority />
 			</Link>

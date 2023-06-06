@@ -5,7 +5,7 @@ import { NavItem } from './NavItem';
 
 type NavItemsProps = {
 	navItems: NavItemType[];
-	alignment: 'center' | 'right';
+	alignment: 'left' | 'center' | 'right';
 	itemColor: string;
 	activeItemColor: string;
 	isMobile: boolean;

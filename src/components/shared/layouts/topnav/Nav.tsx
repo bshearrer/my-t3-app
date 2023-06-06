@@ -29,7 +29,7 @@ type NavProps = {
 	navItems: NavItemType[];
 	navPosition?: 'static' | 'fixed' | 'absolute' | 'sticky' | 'relative';
 	navBackgroundColor?: string;
-	itemsPosition?: 'center' | 'right';
+	itemsPosition?: 'left' | 'center' | 'right';
 	itemColor?: string;
 	activeItemColor?: string;
 	logoWidth?: number;
@@ -63,17 +63,24 @@ export const TopNav = ({
 		<Box component={'nav'}>
 			<AppBar position={navPosition ?? 'static'} component={'nav'} sx={{ bgcolor: navBackgroundColor }}>
 				<Toolbar>
-					<NavLogo href={logoHref} width={logoWidth ?? 50} height={logoHeight ?? 50} />
-
-					<NavItems
-						navItems={navItems}
-						alignment={itemsPosition ?? 'right'}
-						itemColor={itemColor ?? ''}
-						activeItemColor={activeItemColor ?? ''}
-						isMobile={isMobile}
-						setOpenMobileDrawer={setOpenMobileDrawer}
-						openMobileDrawer={openMobileDrawer}
+					<NavLogo
+						href={logoHref}
+						width={logoWidth ?? 50}
+						height={logoHeight ?? 50}
+						itemPosition={itemsPosition ?? 'right'}
 					/>
+
+					<Box flexGrow={itemsPosition == 'left' || itemsPosition == 'center' ? 1 : 0}>
+						<NavItems
+							navItems={navItems}
+							alignment={itemsPosition ?? 'right'}
+							itemColor={itemColor ?? ''}
+							activeItemColor={activeItemColor ?? ''}
+							isMobile={isMobile}
+							setOpenMobileDrawer={setOpenMobileDrawer}
+							openMobileDrawer={openMobileDrawer}
+						/>
+					</Box>
 
 					<NavUserItem />
 				</Toolbar>
