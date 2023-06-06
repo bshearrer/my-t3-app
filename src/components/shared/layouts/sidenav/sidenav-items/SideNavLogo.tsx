@@ -2,7 +2,12 @@ import { Box, ListItem } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export const SideNavLogo = () => {
+type SideNavLogoProps = {
+	src: string;
+	width: number;
+	height: number;
+};
+export const SideNavLogo = ({ src, width, height }: SideNavLogoProps) => {
 	return (
 		<ListItem sx={{ ml: -0.5 }}>
 			<Box
@@ -15,7 +20,7 @@ export const SideNavLogo = () => {
 				}}
 			>
 				<Link href="/">
-					<Image src="/gitwit.svg" alt="gitwit logo" width={50} height={50} priority />
+					<Image src={src} alt="gitwit logo" width={width} height={height} priority />
 				</Link>
 			</Box>
 		</ListItem>

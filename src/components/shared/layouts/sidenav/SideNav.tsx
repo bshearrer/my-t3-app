@@ -1,40 +1,52 @@
-import AddLocationAltIcon from '@mui/icons-material/AddLocationAlt';
-import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import { useState } from 'react';
-import { UserRoles } from 'src/types/types';
+import theme from 'src/styles/theme';
 import { SideNavItem } from './sidenav-items/SideNavItem';
 import { SideNavLogo } from './sidenav-items/SideNavLogo';
 import { SideNavToggleButton } from './sidenav-items/SideNavToggleButton';
 import { SideNavUserItem } from './sidenav-items/SideNavUserItem';
 import { SideNavDrawer, SideNavList } from './sidenav-items/sidenav-styled-components';
-import { TEXT_COLOR, type DrawerItemType } from './util/sidenav-util';
 
-export const SideNav = () => {
+export const CLOSED_DRAWER_WIDTH = 75;
+export const OPEN_DRAWER_WIDTH = 220;
+
+export type SideNavItemType = {
+	href: string;
+	icon: React.ReactNode;
+	text: string;
+	role?: string;
+	privatePage?: boolean;
+};
+
+type SideNavProps = {
+	sideNavItems: SideNavItemType[];
+	logoSrc: string;
+	logoWidth?: number;
+	logoHeight?: number;
+	textColor?: string;
+	hoverColor?: string;
+};
+export const SideNav = ({ logoSrc, logoWidth, logoHeight, sideNavItems, textColor, hoverColor }: SideNavProps) => {
 	const [open, setOpen] = useState(false);
-
-	const drawerItems: DrawerItemType[] = [
-		{
-			href: '/location/add',
-			icon: <AddLocationAltIcon />,
-			text: 'Add Location',
-		},
-		{
-			href: '/admin',
-			icon: <AdminPanelSettingsIcon />,
-			text: 'Admin Settings',
-			role: UserRoles.ADMIN,
-		},
-	];
 
 	return (
 		<SideNavDrawer open={open} variant="permanent">
 			<SideNavList>
-				<SideNavLogo />
-				<SideNavToggleButton open={open} setOpen={setOpen} textColor={TEXT_COLOR} />
-				{drawerItems.map((item) => (
-					<SideNavItem key={item.href} {...item} open={open} />
+				<SideNavLogo src={logoSrc} width={logoWidth ?? 50} height={logoHeight ?? 50} />
+				<SideNavToggleButton
+					open={open}
+					setOpen={setOpen}
+					textColor={textColor ?? theme.palette.primary.main}
+				/>
+				{sideNavItems.map((item) => (
+					<SideNavItem
+						key={item.href}
+						item={item}
+						open={open}
+						textColor={textColor ?? theme.palette.primary.main}
+						hoverColor={hoverColor ?? '#F5F5F5'}
+					/>
 				))}
-				<SideNavUserItem textColor={TEXT_COLOR} open={open} />
+				<SideNavUserItem textColor={textColor ?? theme.palette.primary.main} open={open} />
 			</SideNavList>
 		</SideNavDrawer>
 	);

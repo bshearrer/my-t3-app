@@ -31,7 +31,7 @@ export const SideNavUserItem = ({ textColor, open }: SideNavUserItemProps) => {
 				>
 					<Box>
 						<SignInButton mode="modal">
-							<Button variant="outlined" sx={{ p: 0, color: textColor, ml: -1.4 }}>
+							<Button variant="outlined" sx={{ p: 0, color: textColor }}>
 								Log In
 							</Button>
 						</SignInButton>
