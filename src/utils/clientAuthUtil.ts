@@ -3,7 +3,7 @@ import { type UserResource } from '@clerk/types';
 declare global {
 	interface UserPublicMetadata {
 		[k: string]: unknown;
-		role?: string | string[]; // role can be a string, an array of strings, or undefined
+		role?: string | string[]; 
 	}
 }
 
