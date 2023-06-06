@@ -21,7 +21,7 @@ export const NavLogo = ({ href, isMobile, width, height, itemPosition, drawerIma
 		);
 	}
 	return (
-		<Box flexGrow={itemPosition == 'left' ? 0 : 1}>
+		<Box flexGrow={itemPosition == 'left' ? 0 : 1} display={'flex'}>
 			<Link href="/" style={{ display: 'flex', alignItems: 'center' }}>
 				<Image src={href} alt="Site Logo" width={width} height={height} priority />
 			</Link>
