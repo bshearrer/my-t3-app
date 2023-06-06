@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import theme from 'src/styles/theme';
 import { checkUserRole } from 'src/utils/clientAuthUtil';
-import { type NavItemType } from '../util/NavUtil';
+import { type NavItemType } from '../Nav';
 
 type NavItemProps = {
 	item: NavItemType;

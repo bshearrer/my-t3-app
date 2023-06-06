@@ -2,8 +2,7 @@ import AddLocationAltIcon from '@mui/icons-material/AddLocationAlt';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import { type PropsWithChildren } from 'react';
 import { UserRoles } from 'src/types/types';
-import { Nav } from './nav/Nav';
-import { type NavItemType } from './nav/util/NavUtil';
+import { Nav, type NavItemType } from './nav/Nav';
 
 export const GlobalLayout = ({ children }: PropsWithChildren) => {
 	const navItems: NavItemType[] = [

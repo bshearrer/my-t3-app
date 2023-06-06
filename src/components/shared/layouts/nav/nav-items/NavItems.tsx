@@ -1,5 +1,5 @@
 import { Box, Stack } from '@mui/material';
-import { type NavItemType } from '../util/NavUtil';
+import { type NavItemType } from '../Nav';
 import { NavItem } from './NavItem';
 
 type NavItemsProps = {

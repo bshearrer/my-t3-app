@@ -2,7 +2,24 @@ import { AppBar, Toolbar } from '@mui/material';
 import { NavItems } from './nav-items/NavItems';
 import { NavLogo } from './nav-items/NavLogo';
 import { NavUserItem } from './nav-items/NavUserItem';
-import { type NavItemType } from './util/NavUtil';
+
+type BaseNavItemType = {
+	href: string;
+	privatePage?: boolean;
+	role?: string;
+};
+
+type NavItemWithText = BaseNavItemType & {
+	text: string;
+	icon?: JSX.Element;
+};
+
+type NavItemWithIcon = BaseNavItemType & {
+	text?: string;
+	icon: JSX.Element;
+};
+
+export type NavItemType = NavItemWithText | NavItemWithIcon;
 
 type NavProps = {
 	logoHref: string;
