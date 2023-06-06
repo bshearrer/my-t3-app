@@ -1,4 +1,7 @@
-import { AppBar, Toolbar } from '@mui/material';
+import { AppBar, Box, Toolbar, useMediaQuery } from '@mui/material';
+import { useState } from 'react';
+import theme from 'src/styles/theme';
+import { MobileNavDrawer } from './mobile-nav-items/NavMobileDrawer';
 import { NavItems } from './nav-items/NavItems';
 import { NavLogo } from './nav-items/NavLogo';
 import { NavUserItem } from './nav-items/NavUserItem';
@@ -29,6 +32,12 @@ type NavProps = {
 	itemsPosition?: 'center' | 'right';
 	itemColor?: string;
 	activeItemColor?: string;
+	logoWidth?: number;
+	logoHeight?: number;
+	drawerLogoHref?: string;
+	drawerLogoWidth?: number;
+	drawerLogoHeight?: number;
+	drawerItemColor?: string;
 };
 export const Nav = ({
 	logoHref,
@@ -38,21 +47,48 @@ export const Nav = ({
 	itemsPosition,
 	itemColor,
 	activeItemColor,
+	drawerLogoHref,
+	logoWidth,
+	logoHeight,
+	drawerLogoWidth,
+	drawerLogoHeight,
+	drawerItemColor
 }: NavProps) => {
+	const [openMobileDrawer, setOpenMobileDrawer] = useState(false);
+	const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
 	return (
-		<AppBar position={navPosition ?? 'static'} component={'nav'} sx={{ bgcolor: navBackgroundColor }}>
-			<Toolbar>
-				<NavLogo href={logoHref} />
+		<Box component={'nav'}>
+			<AppBar position={navPosition ?? 'static'} component={'nav'} sx={{ bgcolor: navBackgroundColor }}>
+				<Toolbar>
+					<NavLogo href={logoHref} width={logoWidth ?? 50} height={logoHeight ?? 50} />
 
-				<NavItems
-					navItems={navItems}
-					alignment={itemsPosition ?? 'right'}
-					itemColor={itemColor ?? ''}
-					activeItemColor={activeItemColor ?? ''}
-				/>
+					<NavItems
+						navItems={navItems}
+						alignment={itemsPosition ?? 'right'}
+						itemColor={itemColor ?? ''}
+						activeItemColor={activeItemColor ?? ''}
+						isMobile={isMobile}
+						setOpenMobileDrawer={setOpenMobileDrawer}
+						openMobileDrawer={openMobileDrawer}
+					/>
 
-				<NavUserItem />
-			</Toolbar>
-		</AppBar>
+					<NavUserItem />
+				</Toolbar>
+			</AppBar>
+			<MobileNavDrawer
+				isMobile={isMobile}
+				openMobileDrawer={openMobileDrawer}
+				setOpenMobileDrawer={setOpenMobileDrawer}
+				logoHref={logoHref}
+				navItems={navItems}
+				drawerLogoHref={drawerLogoHref}
+				logoWidth={logoWidth}
+				logoHeight={logoHeight}
+				drawerLogoWidth={drawerLogoWidth}
+				drawerLogoHeight={drawerLogoHeight}
+				itemColor={drawerItemColor ?? itemColor ?? ''}
+			/>
+		</Box>
 	);
 };
