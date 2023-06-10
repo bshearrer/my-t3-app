@@ -1,12 +1,4 @@
-import {
-	FormControl,
-	FormControlLabel,
-	FormLabel,
-	Radio,
-	RadioGroup,
-	Typography,
-	type FormControlProps,
-} from '@mui/material';
+import { Box, FormControl, FormControlLabel, Radio, RadioGroup, Typography } from '@mui/material';
 import { Controller, useFormState, type Control, type Path } from 'react-hook-form';
 
 export type RadioOptionType = {
@@ -22,7 +14,8 @@ export type FormRadioButtonProps<T extends DefaultFieldValues> = {
 	label: string;
 	options: RadioOptionType[];
 	row?: boolean;
-} & Omit<FormControlProps, 'defaultValue'>;
+	required?: boolean;
+};
 
 export const FormRadioButton = <T extends DefaultFieldValues>({
 	control,
@@ -30,7 +23,7 @@ export const FormRadioButton = <T extends DefaultFieldValues>({
 	label,
 	options,
 	row = false,
-	...formControlProps
+	required = false,
 }: FormRadioButtonProps<T>) => {
 	const { errors } = useFormState({ control });
 	const error = !!errors[name as string];
@@ -40,10 +33,15 @@ export const FormRadioButton = <T extends DefaultFieldValues>({
 			name={name as Path<T>}
 			control={control}
 			render={({ field }) => (
-				<FormControl error={error} {...formControlProps}>
-					<FormLabel>
-						<Typography>{label}</Typography>
-					</FormLabel>
+				<FormControl error={error}>
+					<Box sx={{ display: 'flex', alignItems: 'center' }}>
+						<Typography color={error ? 'error' : 'inherit'}>{label}</Typography>
+						{required && (
+							<Typography component="span" color={error ? 'error' : 'inherit'}>
+								&nbsp;*
+							</Typography>
+						)}
+					</Box>
 
 					<RadioGroup {...field} row={row}>
 						{options.map((option, index) => (
@@ -56,7 +54,7 @@ export const FormRadioButton = <T extends DefaultFieldValues>({
 						))}
 					</RadioGroup>
 					{errors[name as string] && (
-						<Typography color="red" variant="caption" sx={{ pl: 2 }}>
+						<Typography color="error" variant="caption" sx={{ pl: 2 }}>
 							{errors[name as string]?.message as string}
 						</Typography>
 					)}
