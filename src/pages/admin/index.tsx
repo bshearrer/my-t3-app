@@ -32,7 +32,6 @@ export default function AdminPage() {
 			alignItems={'center'}
 			height={'100vh'}
 			width={'100vw'}
-			bgcolor={'#f5f5f5'}
 		>
 			<Box
 				bgcolor={'white'}
