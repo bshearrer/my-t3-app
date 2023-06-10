@@ -5,6 +5,7 @@ export default function FormPage() {
 	const defaultValues: FormExampleFormData = {
 		name: '',
 		contactMethod: '',
+		isSubscribed: '',
 	};
 	return (
 		<Container>

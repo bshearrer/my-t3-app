@@ -2,6 +2,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Stack } from '@mui/material';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
+import { FormRadioButton } from '../shared/form-inputs/FormRadioButton';
 import { FormSelect } from '../shared/form-inputs/FormSelect';
 import { FormTextField } from '../shared/form-inputs/FormTextField';
 import { LoadingButton } from '../shared/loading/LoadingButton';
@@ -9,6 +10,7 @@ import { LoadingButton } from '../shared/loading/LoadingButton';
 const validationSchema = z.object({
 	name: z.string().nonempty('Name is required'),
 	contactMethod: z.string().nonempty('Contact method is required'),
+	isSubscribed: z.string().nonempty('Subscription is required'),
 });
 
 export type FormExampleFormData = z.infer<typeof validationSchema>;
@@ -41,6 +43,16 @@ export const FormExample = (props: { defaultValues: FormExampleFormData }) => {
 				name="contactMethod"
 				label="Preferred Contact Method"
 				required
+			/>
+			<FormRadioButton
+				options={[
+					{ value: 'yes', label: 'Yes' },
+					{ value: 'no', label: 'No' },
+				]}
+				control={control}
+				name="isSubscribed"
+				label="Subscribe to newsletter?"
+				row
 			/>
 
 			<LoadingButton
