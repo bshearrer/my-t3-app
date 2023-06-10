@@ -1,5 +1,4 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Stack } from '@mui/material';
 import { useForm } from 'react-hook-form';
 import { useAlert } from 'src/hooks/useAlert';
 import { api } from 'src/utils/api';
@@ -39,16 +38,14 @@ export const AddLocationForm = () => {
 	return (
 		<>
 			<FormTextField control={control} name="address" label="Address" required />
-			<Stack direction="row" spacing={2}>
-				<LoadingButton
-					type="submit"
-					disabled={isSubmitting || isLoading}
-					onClick={(e) => void handleSubmit(onSubmit)(e)}
-					variant="contained"
-					label="Submit"
-					isLoading={isSubmitting || isLoading}
-				/>
-			</Stack>
+			<LoadingButton
+				type="submit"
+				disabled={isSubmitting || isLoading}
+				onClick={(e) => void handleSubmit(onSubmit)(e)}
+				variant="contained"
+				label="Submit"
+				isLoading={isSubmitting || isLoading}
+			/>
 		</>
 	);
 };
