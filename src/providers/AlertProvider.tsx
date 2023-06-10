@@ -9,19 +9,34 @@ export function AlertProvider({ children }: PropsWithChildren) {
 		setAlerts((prevAlerts) => [...prevAlerts, alert]);
 	}
 
+	function addSuccessAlert(message: string) {
+		addAlert({
+			message,
+			severity: 'success',
+			autoHideDuration: 3000,
+		});
+	}
+
+	function addErrorAlert(message: string) {
+		addAlert({
+			message,
+			severity: 'error',
+		});
+	}
+
 	const onCloseSnackbar = (i: number) => {
 		setAlerts((prevAlerts) => prevAlerts.filter((_, alertIndex) => alertIndex !== i));
 	};
 
 	return (
-		<AlertContext.Provider value={{ addAlert }}>
+		<AlertContext.Provider value={{ addAlert, addSuccessAlert, addErrorAlert }}>
 			{children}
 			<Container>
 				{alerts.map((alert, i) => (
 					<Snackbar
 						key={i}
 						open={true}
-						autoHideDuration={alert.autoHideDuration ?? null}
+						autoHideDuration={alert.autoHideDuration ?? undefined}
 						onClose={() => onCloseSnackbar(i)}
 						TransitionComponent={Slide}
 						anchorOrigin={{
