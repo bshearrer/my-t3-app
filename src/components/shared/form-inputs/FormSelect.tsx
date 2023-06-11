@@ -1,5 +1,5 @@
 import { MenuItem, TextField, type TextFieldProps } from '@mui/material';
-import { Controller, useFormState, type Control, type Path } from 'react-hook-form';
+import { type Control, Controller, type FieldPath, type FieldValues, useFormState } from 'react-hook-form';
 
 export type SelectOptionType = {
 	label: string;
@@ -8,36 +8,42 @@ export type SelectOptionType = {
 
 export type DefaultFieldValues = Record<string, string | number | boolean | null>;
 
-export type FormSelectProps<T extends DefaultFieldValues> = {
-	control: Control<T>;
-	name: keyof T;
+type FormSelectProps<
+	TFieldValues extends FieldValues = FieldValues,
+	TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
+> = {
+	control: Control<TFieldValues>;
+	name: TName;
 	label: string;
 	options: SelectOptionType[];
+	multiple?: boolean;
 } & Omit<TextFieldProps, 'defaultValue'>;
 
-export const FormSelect = <T extends DefaultFieldValues>({
+export const FormSelect = <
+	TFieldValues extends FieldValues = FieldValues,
+	TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
+>({
 	control,
 	name,
 	label,
 	options,
+	multiple = false,
 	...textFieldProps
-}: FormSelectProps<T>) => {
+}: FormSelectProps<TFieldValues, TName>) => {
 	const { errors } = useFormState({ control });
 	const error = !!errors[name];
 
 	const getFormInputOptions = (): JSX.Element[] => {
-		return options.map((option) => {
-			return (
-				<MenuItem key={option.value} value={option.value}>
-					{option.label}
-				</MenuItem>
-			);
-		});
+		return options.map((option) => (
+			<MenuItem key={option.value} value={option.value}>
+				{option.label}
+			</MenuItem>
+		));
 	};
 
 	return (
 		<Controller
-			name={name as Path<T>}
+			name={name}
 			control={control}
 			render={({ field }) => (
 				<TextField
@@ -49,6 +55,7 @@ export const FormSelect = <T extends DefaultFieldValues>({
 					error={error}
 					helperText={(errors[name]?.message as string) || ''}
 					SelectProps={{
+						multiple,
 						MenuProps: {
 							PaperProps: {
 								sx: {

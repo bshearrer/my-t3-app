@@ -6,6 +6,7 @@ export default function FormPage() {
 		name: '',
 		contactMethod: '',
 		isSubscribed: '',
+		operatingSystems: [''],
 	};
 	return (
 		<Container>

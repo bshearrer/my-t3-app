@@ -1,20 +1,28 @@
 import { TextField, type TextFieldProps } from '@mui/material';
-import { Controller, useFormState, type Control, type Path } from 'react-hook-form';
+import { type Control, Controller, type FieldPath, type FieldValues, useFormState } from 'react-hook-form';
 
-type DefaultFieldValues = Record<string, string | number | boolean | null>;
+type FormValue = string | string[];
 
-type FormTextFieldProps<T extends DefaultFieldValues> = {
-	control: Control<T>;
-	name: keyof T;
+export type DefaultFieldValues = Record<string, FormValue | number | boolean | null>;
+
+type FormTextFieldProps<
+	TFieldValues extends FieldValues = FieldValues,
+	TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
+> = {
+	control: Control<TFieldValues>;
+	name: TName;
 	label: string;
 } & Omit<TextFieldProps, 'defaultValue'>;
 
-export const FormTextField = <T extends DefaultFieldValues>({
+export const FormTextField = <
+	TFieldValues extends FieldValues = FieldValues,
+	TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
+>({
 	control,
 	name,
 	label,
 	...textFieldProps
-}: FormTextFieldProps<T>) => {
+}: FormTextFieldProps<TFieldValues, TName>) => {
 	const { errors } = useFormState({ control });
 	const error = !!errors[name];
 	return (
@@ -29,7 +37,7 @@ export const FormTextField = <T extends DefaultFieldValues>({
 					fullWidth
 				/>
 			)}
-			name={name as Path<T>}
+			name={name}
 			control={control}
 		/>
 	);

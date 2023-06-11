@@ -1,5 +1,5 @@
 import { Box, FormControl, FormControlLabel, Radio, RadioGroup, Typography } from '@mui/material';
-import { Controller, useFormState, type Control, type Path } from 'react-hook-form';
+import { type Control, Controller, type FieldPath, type FieldValues, useFormState } from 'react-hook-form';
 
 export type RadioOptionType = {
 	label: string;
@@ -8,29 +8,35 @@ export type RadioOptionType = {
 
 export type DefaultFieldValues = Record<string, string | number | boolean | null>;
 
-export type FormRadioButtonProps<T extends DefaultFieldValues> = {
-	control: Control<T>;
-	name: keyof T;
+type FormRadioButtonProps<
+	TFieldValues extends FieldValues = FieldValues,
+	TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
+> = {
+	control: Control<TFieldValues>;
+	name: TName;
 	label: string;
 	options: RadioOptionType[];
 	row?: boolean;
 	required?: boolean;
 };
 
-export const FormRadioButton = <T extends DefaultFieldValues>({
+export const FormRadioButton = <
+	TFieldValues extends FieldValues = FieldValues,
+	TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
+>({
 	control,
 	name,
 	label,
 	options,
 	row = false,
 	required = false,
-}: FormRadioButtonProps<T>) => {
+}: FormRadioButtonProps<TFieldValues, TName>) => {
 	const { errors } = useFormState({ control });
-	const error = !!errors[name as string];
+	const error = !!errors[name];
 
 	return (
 		<Controller
-			name={name as Path<T>}
+			name={name}
 			control={control}
 			render={({ field }) => (
 				<FormControl error={error}>
@@ -53,9 +59,9 @@ export const FormRadioButton = <T extends DefaultFieldValues>({
 							/>
 						))}
 					</RadioGroup>
-					{errors[name as string] && (
+					{errors[name] && (
 						<Typography color="error" variant="caption" sx={{ pl: 2 }}>
-							{errors[name as string]?.message as string}
+							{errors[name]?.message as string}
 						</Typography>
 					)}
 				</FormControl>
