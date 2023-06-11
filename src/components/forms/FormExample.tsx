@@ -53,6 +53,7 @@ export const FormExample = (props: { defaultValues: FormExampleFormData }) => {
 				name="isSubscribed"
 				label="Subscribe to newsletter?"
 				row
+				required
 			/>
 
 			<LoadingButton
