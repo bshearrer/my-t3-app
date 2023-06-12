@@ -11,10 +11,15 @@ const validationSchema = z.object({
 	name: z.string().nonempty('Name is required'),
 	contactMethod: z.string().nonempty('Contact method is required'),
 	isSubscribed: z.string().nonempty('Subscription is required'),
-	operatingSystems: z.array(z.string()),
+	operatingSystems: z.array(z.string()).nonempty('Operating system is required'),
 });
 
-export type FormExampleFormData = z.infer<typeof validationSchema>;
+export type FormExampleFormData = {
+	name: string;
+	contactMethod: string;
+	isSubscribed: string;
+	operatingSystems: string[];
+};
 
 export const FormExample = (props: { defaultValues: FormExampleFormData }) => {
 	const {
