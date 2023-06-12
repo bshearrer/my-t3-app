@@ -22,7 +22,7 @@ export type FormExampleFormData = {
 	contactMethod: string;
 	isSubscribed: string;
 	operatingSystems: string[];
-	date: string;
+	date: Date;
 };
 
 const contactMethodOptions = [
