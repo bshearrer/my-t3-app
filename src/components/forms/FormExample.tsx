@@ -56,20 +56,23 @@ export const FormExample = (props: { defaultValues: FormExampleFormData }) => {
 		<Stack spacing={2}>
 			<h1>Form Example</h1>
 			<FormTextField control={control} name="name" label="Name" required />
-			<FormSelect
-				options={contactMethodOptions}
-				control={control}
-				name="contactMethod"
-				label="Preferred Contact Method"
-				required
-			/>
-			<FormSelect
-				options={operatingSystemOptions}
-				control={control}
-				name="operatingSystems"
-				label="Select your operating systems"
-				multiple
-			/>
+			<Stack direction={'row'} spacing={2}>
+				<FormSelect
+					options={contactMethodOptions}
+					control={control}
+					name="contactMethod"
+					label="Preferred Contact Method"
+					required
+				/>
+				<FormSelect
+					options={operatingSystemOptions}
+					control={control}
+					name="operatingSystems"
+					label="Select your operating systems"
+					multiple
+					required
+				/>
+			</Stack>
 
 			<FormRadioButton
 				options={radioButtonOptions}
