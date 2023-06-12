@@ -21,6 +21,23 @@ export type FormExampleFormData = {
 	operatingSystems: string[];
 };
 
+const contactMethodOptions = [
+	{ value: 'email', label: 'Email' },
+	{ value: 'phone', label: 'Phone' },
+	{ value: 'text', label: 'Text' },
+];
+
+const operatingSystemOptions = [
+	{ value: 'windows', label: 'Windows' },
+	{ value: 'macOS', label: 'MacOS' },
+	{ value: 'linux', label: 'Linux' },
+];
+
+const radioButtonOptions = [
+	{ value: 'yes', label: 'Yes' },
+	{ value: 'no', label: 'No' },
+];
+
 export const FormExample = (props: { defaultValues: FormExampleFormData }) => {
 	const {
 		control,
@@ -40,22 +57,14 @@ export const FormExample = (props: { defaultValues: FormExampleFormData }) => {
 			<h1>Form Example</h1>
 			<FormTextField control={control} name="name" label="Name" required />
 			<FormSelect
-				options={[
-					{ value: 'email', label: 'Email' },
-					{ value: 'phone', label: 'Phone' },
-					{ value: 'text', label: 'Text' },
-				]}
+				options={contactMethodOptions}
 				control={control}
 				name="contactMethod"
 				label="Preferred Contact Method"
 				required
 			/>
 			<FormSelect
-				options={[
-					{ value: 'windows', label: 'Windows' },
-					{ value: 'macOS', label: 'MacOS' },
-					{ value: 'linux', label: 'Linux' },
-				]}
+				options={operatingSystemOptions}
 				control={control}
 				name="operatingSystems"
 				label="Select your operating systems"
@@ -63,10 +72,7 @@ export const FormExample = (props: { defaultValues: FormExampleFormData }) => {
 			/>
 
 			<FormRadioButton
-				options={[
-					{ value: 'yes', label: 'Yes' },
-					{ value: 'no', label: 'No' },
-				]}
+				options={radioButtonOptions}
 				control={control}
 				name="isSubscribed"
 				label="Subscribe to newsletter?"
