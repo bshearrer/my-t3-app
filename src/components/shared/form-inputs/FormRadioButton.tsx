@@ -1,5 +1,5 @@
 import { Box, FormControl, FormControlLabel, Radio, RadioGroup, Typography } from '@mui/material';
-import { type Control, Controller, type FieldPath, type FieldValues, useFormState } from 'react-hook-form';
+import { Controller, useFormState, type Control, type FieldPath, type FieldValues } from 'react-hook-form';
 
 export type RadioOptionType = {
 	label: string;
@@ -54,8 +54,9 @@ export const FormRadioButton = <
 							<FormControlLabel
 								key={index}
 								value={option.value}
-								control={<Radio />}
+								control={<Radio sx={{ color: errors[name] ? 'red' : 'inherit' }} />}
 								label={option.label}
+								sx={{ color: errors[name] ? 'red' : 'inherit' }}
 							/>
 						))}
 					</RadioGroup>
