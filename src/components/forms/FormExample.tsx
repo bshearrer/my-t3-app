@@ -2,6 +2,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Stack } from '@mui/material';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
+import { FormDateField } from '../shared/form-inputs/FormDateField';
 import { FormRadioButton } from '../shared/form-inputs/FormRadioButton';
 import { FormSelect } from '../shared/form-inputs/FormSelect';
 import { FormTextField } from '../shared/form-inputs/FormTextField';
@@ -12,6 +13,7 @@ const validationSchema = z.object({
 	contactMethod: z.string().nonempty('Contact method is required'),
 	isSubscribed: z.string().nonempty('Subscription is required'),
 	operatingSystems: z.array(z.string()).nonempty('Operating system is required'),
+	date: z.date(),
 });
 
 export type FormExampleFormData = {
@@ -19,6 +21,7 @@ export type FormExampleFormData = {
 	contactMethod: string;
 	isSubscribed: string;
 	operatingSystems: string[];
+	date: Date;
 };
 
 const contactMethodOptions = [
@@ -82,6 +85,7 @@ export const FormExample = (props: { defaultValues: FormExampleFormData }) => {
 				row
 				required
 			/>
+			<FormDateField control={control} name="date" label="Date" />
 
 			<LoadingButton
 				disabled={isSubmitting}
