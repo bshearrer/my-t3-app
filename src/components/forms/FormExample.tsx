@@ -11,7 +11,7 @@ const validationSchema = z.object({
 	name: z.string().nonempty('Name is required'),
 	contactMethod: z.string().nonempty('Contact method is required'),
 	isSubscribed: z.string().nonempty('Subscription is required'),
-	operatingSystems: z.array(z.string()).nonempty('Operating system is required'),
+	operatingSystems: z.array(z.string()),
 });
 
 export type FormExampleFormData = z.infer<typeof validationSchema>;
@@ -53,7 +53,7 @@ export const FormExample = (props: { defaultValues: FormExampleFormData }) => {
 				]}
 				control={control}
 				name="operatingSystems"
-				label="Preferred Contact Method"
+				label="Select your operating systems"
 				multiple
 			/>
 
