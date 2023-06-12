@@ -7,7 +7,7 @@ export default function FormPage() {
 		contactMethod: '',
 		isSubscribed: '',
 		operatingSystems: [],
-		date: new Date(),
+		date: '',
 	};
 	return (
 		<Container>

@@ -34,6 +34,7 @@ export const FormDateField = <
 							textField: {
 								error,
 								helperText: (errors[name]?.message as string) || '',
+								fullWidth: true,
 							},
 						}}
 					/>

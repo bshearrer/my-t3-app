@@ -5,6 +5,7 @@ import { z } from 'zod';
 import { FormDateField } from '../shared/form-inputs/FormDateField';
 import { FormRadioButton } from '../shared/form-inputs/FormRadioButton';
 import { FormSelect } from '../shared/form-inputs/FormSelect';
+import { FormSelectChips } from '../shared/form-inputs/FormSelectChips';
 import { FormTextField } from '../shared/form-inputs/FormTextField';
 import { LoadingButton } from '../shared/loading/LoadingButton';
 
@@ -21,7 +22,7 @@ export type FormExampleFormData = {
 	contactMethod: string;
 	isSubscribed: string;
 	operatingSystems: string[];
-	date: Date;
+	date: string;
 };
 
 const contactMethodOptions = [
@@ -59,15 +60,23 @@ export const FormExample = (props: { defaultValues: FormExampleFormData }) => {
 		<Stack spacing={2}>
 			<h1>Form Example</h1>
 			<FormTextField control={control} name="name" label="Name" required />
+			<FormSelect
+				options={contactMethodOptions}
+				control={control}
+				name="contactMethod"
+				label="Preferred Contact Method"
+				required
+			/>
 			<Stack direction={'row'} spacing={2}>
 				<FormSelect
-					options={contactMethodOptions}
+					options={operatingSystemOptions}
 					control={control}
-					name="contactMethod"
-					label="Preferred Contact Method"
+					name="operatingSystems"
+					label="Select your operating systems"
+					multiple
 					required
 				/>
-				<FormSelect
+				<FormSelectChips
 					options={operatingSystemOptions}
 					control={control}
 					name="operatingSystems"
@@ -77,15 +86,17 @@ export const FormExample = (props: { defaultValues: FormExampleFormData }) => {
 				/>
 			</Stack>
 
-			<FormRadioButton
-				options={radioButtonOptions}
-				control={control}
-				name="isSubscribed"
-				label="Subscribe to newsletter?"
-				row
-				required
-			/>
-			<FormDateField control={control} name="date" label="Date" />
+			<Stack direction={'row'} spacing={2}>
+				<FormRadioButton
+					options={radioButtonOptions}
+					control={control}
+					name="isSubscribed"
+					label="Subscribe to newsletter?"
+					row
+					required
+				/>
+				<FormDateField control={control} name="date" label="Date" />
+			</Stack>
 
 			<LoadingButton
 				disabled={isSubmitting}

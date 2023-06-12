@@ -39,7 +39,7 @@ export const FormRadioButton = <
 			name={name}
 			control={control}
 			render={({ field }) => (
-				<FormControl error={error}>
+				<FormControl error={error} fullWidth>
 					<Box sx={{ display: 'flex', alignItems: 'center' }}>
 						<Typography color={error ? 'error' : 'inherit'}>{label}</Typography>
 						{required && (
